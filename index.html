@@ -6,142 +6,18 @@
     <title>Simulação LMIA | Lucas NOC 72310</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap');
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { 
-            background: #000; 
-            color: #00f7ff; 
-            font-family: 'Share Tech Mono', monospace; 
-            padding: 20px;
-            line-height: 1.7;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .container { 
-            max-width: 900px; 
-            width: 100%;
-            margin: 0 auto; 
-            border: 3px solid #00f7ff; 
-            padding: 35px;
-            box-shadow: 0 0 60px rgba(0, 247, 255, 0.6), inset 0 0 40px rgba(0, 247, 255, 0.1);
-            background: rgba(5, 5, 15, 0.98);
-        }
-        h1 { 
-            font-family: 'Orbitron', sans-serif;
-            color: #00f7ff; 
-            text-align: center; 
-            font-size: 2.2rem; 
-            margin-bottom: 35px; 
-            text-shadow: 0 0 25px #00f7ff;
-            font-weight: 900;
-            letter-spacing: 2px;
-        }
-        .pergunta { 
-            margin: 28px 0;
-            background: rgba(0, 247, 255, 0.03);
-            padding: 22px;
-            border: 1px solid rgba(0, 247, 255, 0.4);
-            box-shadow: inset 0 0 15px rgba(0, 247, 255, 0.05);
-        }
-        .pergunta h3 { 
-            color: #ff00ff; 
-            margin-bottom: 15px; 
-            font-size: 1.15rem;
-            text-shadow: 0 0 12px #ff00ff;
-            font-weight: 700;
-        }
-        .resposta { 
-            color: #00ff41; 
-            margin-left: 20px; 
-            border-left: 4px solid #ff00ff; 
-            padding-left: 20px;
-            text-shadow: 0 0 8px #00ff41;
-            font-size: 0.95rem;
-        }
-        .resposta strong { 
-            color: #ff00ff; 
-            text-shadow: 0 0 10px #ff00ff;
-        }
-        .destaque {
-            background: rgba(255, 0, 255, 0.2);
-            padding: 2px 6px;
-            border: 1px solid #ff00ff;
-            box-shadow: 0 0 10px rgba(255, 0, 255, 0.5);
-        }
-        .btn-voltar {
-            background: rgba(0, 247, 255, 0.1);
-            border: 2px solid #00f7ff;
-            color: #00f7ff;
-            padding: 15px 35px;
-            font-family: 'Share Tech Mono', monospace;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            margin: 35px 0 10px 0;
-            text-shadow: 0 0 10px #00f7ff;
-            box-shadow: 0 0 20px rgba(0, 247, 255, 0.4);
-            transition: all 0.3s ease;
-        }
-        .btn-voltar:hover {
-            background: #00f7ff;
-            color: #0a0a0a;
-            box-shadow: 0 0 30px #00f7ff;
-        }
+        *{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#00f7ff;font-family:'Share Tech Mono',monospace;padding:20px;line-height:1.7;min-height:100vh;display:flex;align-items:center;justify-content:center}.container{max-width:900px;width:100%;margin:0 auto;border:3px solid #00f7ff;padding:35px;box-shadow:0 0 60px rgba(0,247,255,.6),inset 0 0 40px rgba(0,247,255,.1);background:rgba(5,5,15,.98)}h1{font-family:'Orbitron',sans-serif;color:#00f7ff;text-align:center;font-size:2.2rem;margin-bottom:35px;text-shadow:0 0 25px #00f7ff;font-weight:900;letter-spacing:2px}.pergunta{margin:28px 0;background:rgba(0,247,255,.03);padding:22px;border:1px solid rgba(0,247,255,.4);box-shadow:inset 0 0 15px rgba(0,247,255,.05)}.pergunta h3{color:#ff00ff;margin-bottom:15px;font-size:1.15rem;text-shadow:0 0 12px #ff00ff;font-weight:700}.resposta{color:#00ff41;margin-left:20px;border-left:4px solid #ff00ff;padding-left:20px;text-shadow:0 0 8px #00ff41;font-size:.95rem}.resposta strong{color:#ff00ff;text-shadow:0 0 10px #ff00ff}.destaque{background:rgba(255,0,255,.2);padding:2px 6px;border:1px solid #ff00ff;box-shadow:0 0 10px rgba(255,0,255,.5)}.btn-voltar{background:rgba(0,247,255,.1);border:2px solid #00f7ff;color:#00f7ff;padding:15px 35px;font-family:'Share Tech Mono',monospace;cursor:pointer;text-decoration:none;display:inline-block;margin:35px 0 10px 0;text-shadow:0 0 10px #00f7ff;box-shadow:0 0 20px rgba(0,247,255,.4);transition:all .3s ease}.btn-voltar:hover{background:#00f7ff;color:#0a0a0a;box-shadow:0 0 30px #00f7ff}
     </style>
 </head>
 <body>
     <div class="container">
         <h1>SIMULAÇÃO ENTREVISTA LMIA - GOVERNMENT OF CANADA</h1>
-        
-        <div class="pergunta">
-            <h3>OFICIAL LMIA: 1. Qual sua experiência com NOC 72310 - Carpenter?</h3>
-            <p class="resposta">
-                <strong>LUCAS:</strong> 10+ anos comprovados em carteira na Tok&Stok. <br><br>
-                <strong>Até 2013:</strong> Montador de Móveis em campo usando sistema Gcan. Instalação técnica direto na residência de clientes.<br><br>
-                <strong>Final de 2016 até Jul/2018:</strong> Escritório como Auxiliar de Montagem. Administrava <span class="destaque">Oracle TOA</span>, roteirização de equipes, controle de estoque e agendamento técnico.<br><br>
-                <strong>2021 a 2026:</strong> Suporte técnico completo. Montagem, instalação, pós-venda e atendimento ao cliente. <span class="destaque">Deslocamento até clientes via motorista da empresa</span>.<br><br>
-                <strong>Total: 14.832 móveis montados.</strong> Zero retrabalho em 2023/2024.
-            </p>
-        </div>
-
-        <div class="pergunta">
-            <h3>OFICIAL LMIA: 2. Você possui licença para dirigir no Canadá?</h3>
-            <p class="resposta">
-                <strong>LUCAS:</strong> Possuo <span class="destaque">CNH D com Atividade Remunerada</span> no Brasil. Elegível para conversão em Class 3 PEI.<br><br>
-                <strong>Experiência:</strong> 5 anos em logística de entregas Tok&Stok. <span class="destaque">Acompanhava motorista da empresa</span> até residência de clientes para execução da montagem técnica. Não exercia função de motorista. Experiência em carga/descarga, roteirização e conferência de material. Zero acidentes.
-            </p>
-        </div>
-
-        <div class="pergunta">
-            <h3>OFICIAL LMIA: 3. Qual seu nível de inglês para o trabalho?</h3>
-            <p class="resposta">
-                <strong>LUCAS:</strong> Inglês técnico básico operacional. Leio plantas baixas, manuais Oracle TOA, e me comunico com clientes sobre montagem. Estou cursando inglês intermediário focado em construção civil para PEI.
-            </p>
-        </div>
-
-        <div class="pergunta">
-            <h3>OFICIAL LMIA: 4. Por que o salário de $34.20/h está acima da média $29/h?</h3>
-            <p class="resposta">
-                <strong>LUCAS:</strong> Valor justificado por especialização: <br>
-                ► CNH D +$2.50/h - Transporte materiais<br>
-                ► Certificação NR-11 +$1.50/h - Segurança<br>
-                ► 10 anos Oracle TOA +$2.20/h - Gestão<br>
-                <span class="destaque">Total: $6.20 acima da base.</span> Alinhado com NOC 72310 + diferencial técnico comprovado.
-            </p>
-        </div>
-
-        <div class="pergunta">
-            <h3>OFICIAL LMIA: 5. Como você garante qualidade sem retrabalho?</h3>
-            <p class="resposta">
-                <strong>LUCAS:</strong> Processo em 3 etapas: 1) Conferência pré-montagem via Gcan, 2) Checklist Oracle TOA durante instalação, 3) Teste final com cliente. Resultado: <span class="destaque">14.832 móveis, zero retorno 2023/2024</span>. Documentado em sistema.
-            </p>
-        </div>
-
-        <div style="text-align: center;">
-            <a href="index.html" class="btn-voltar">◄ VOLTAR AO DASHBOARD</a>
-        </div>
+        <div class="pergunta"><h3>OFICIAL LMIA: 1. Qual sua experiência com NOC 72310 - Carpenter?</h3><p class="resposta"><strong>LUCAS:</strong> 10+ anos comprovados em carteira na Tok&Stok. <br><br><strong>Até 2013:</strong> Montador de Móveis em campo usando sistema Gcan. Instalação técnica direto na residência de clientes.<br><br><strong>Final de 2016 até Jul/2018:</strong> Escritório como Auxiliar de Montagem. Administrava <span class="destaque">Oracle TOA</span>, roteirização de equipes, controle de estoque e agendamento técnico.<br><br><strong>2021 a 2026:</strong> Suporte técnico completo. Montagem, instalação, pós-venda e atendimento ao cliente. <span class="destaque">Deslocamento até clientes via motorista da empresa</span>.<br><br><strong>Total: 14.832 móveis montados.</strong> Zero retrabalho em 2023/2024.</p></div>
+        <div class="pergunta"><h3>OFICIAL LMIA: 2. Você possui licença para dirigir no Canadá?</h3><p class="resposta"><strong>LUCAS:</strong> Possuo <span class="destaque">CNH D com Atividade Remunerada</span> no Brasil. Elegível para conversão em Class 3 PEI.<br><br><strong>Experiência:</strong> 5 anos em logística de entregas Tok&Stok. <span class="destaque">Acompanhava motorista da empresa</span> até residência de clientes para execução da montagem técnica. Não exercia função de motorista. Experiência em carga/descarga, roteirização e conferência de material. Zero acidentes.</p></div>
+        <div class="pergunta"><h3>OFICIAL LMIA: 3. Qual seu nível de inglês para o trabalho?</h3><p class="resposta"><strong>LUCAS:</strong> Inglês técnico básico operacional. Leio plantas baixas, manuais Oracle TOA, e me comunico com clientes sobre montagem. Estou cursando inglês intermediário focado em construção civil para PEI.</p></div>
+        <div class="pergunta"><h3>OFICIAL LMIA: 4. Por que o salário de $34.20/h está acima da média $29/h?</h3><p class="resposta"><strong>LUCAS:</strong> Valor justificado por especialização: <br>► CNH D +$2.50/h - Transporte materiais<br>► Certificação NR-11 +$1.50/h - Segurança<br>► 10 anos Oracle TOA +$2.20/h - Gestão<br><span class="destaque">Total: $6.20 acima da base.</span> Alinhado com NOC 72310 + diferencial técnico comprovado.</p></div>
+        <div class="pergunta"><h3>OFICIAL LMIA: 5. Como você garante qualidade sem retrabalho?</h3><p class="resposta"><strong>LUCAS:</strong> Processo em 3 etapas: 1) Conferência pré-montagem via Gcan, 2) Checklist Oracle TOA durante instalação, 3) Teste final com cliente. Resultado: <span class="destaque">14.832 móveis, zero retorno 2023/2024</span>. Documentado em sistema.</p></div>
+        <div style="text-align:center"><a href="index.html" class="btn-voltar">◄ VOLTAR AO DASHBOARD</a></div>
     </div>
 </body>
 </html>
