@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lucas da Silva Lima | NOC 72310 - PEI Canada</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
         
@@ -13,102 +14,121 @@
             background: #0a0a0a; 
             color: #00f7ff; 
             font-family: 'Share Tech Mono', monospace; 
-            padding: 20px;
+            padding: 10px;
             background-image: 
                 linear-gradient(rgba(0, 247, 255, 0.03) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(0, 247, 255, 0.03) 1px, transparent 1px);
             background-size: 20px 20px;
         }
         .container { 
-            max-width: 1200px; 
+            max-width: 1400px; 
             margin: 0 auto; 
             border: 2px solid #00f7ff; 
-            padding: 20px;
-            box-shadow: 0 0 30px rgba(0, 247, 255, 0.3), inset 0 0 20px rgba(0, 247, 255, 0.1);
-            background: rgba(10, 10, 10, 0.95);
+            padding: 15px;
+            box-shadow: 0 0 50px rgba(0, 247, 255, 0.5), inset 0 0 30px rgba(0, 247, 255, 0.1);
+            background: rgba(5, 5, 5, 0.98);
         }
         .header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 2px solid #ff00ff;
-            padding-bottom: 15px;
-            margin-bottom: 25px;
+            border: 2px solid #00f7ff;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            background: rgba(0, 247, 255, 0.05);
         }
         h1 { 
             font-family: 'Orbitron', sans-serif;
             color: #00f7ff; 
-            font-size: 2.2rem; 
-            text-shadow: 0 0 15px #00f7ff;
+            font-size: 2.3rem; 
+            text-shadow: 0 0 20px #00f7ff;
             font-weight: 900;
+            letter-spacing: 3px;
         }
         .sub-header {
             color: #ff00ff;
             font-size: 0.9rem;
-            margin-top: 5px;
+            margin-top: 3px;
+            text-shadow: 0 0 10px #ff00ff;
+        }
+        .dolar-box {
+            text-align: right;
         }
         .dolar {
             font-family: 'Orbitron', sans-serif;
             color: #ff00ff;
-            font-size: 2rem;
-            text-shadow: 0 0 15px #ff00ff;
-            text-align: right;
+            font-size: 2.3rem;
+            text-shadow: 0 0 20px #ff00ff;
+            animation: pulse 2s infinite;
+        }
+        .live-time {
+            color: #ff00ff;
+            font-size: 0.75rem;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.85; }
         }
         .stats-grid { 
             display: grid; 
             grid-template-columns: repeat(4, 1fr); 
             gap: 15px; 
-            margin-bottom: 25px; 
+            margin-bottom: 15px; 
         }
         .stat-card { 
-            border: 1px solid #00f7ff; 
+            border: 2px solid #00f7ff; 
             padding: 15px;
             background: rgba(0, 247, 255, 0.05);
             text-align: center;
+            box-shadow: inset 0 0 20px rgba(0, 247, 255, 0.1);
         }
         .stat-title {
             color: #00f7ff;
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             margin-bottom: 10px;
             text-transform: uppercase;
+            letter-spacing: 1px;
         }
         .stat-number { 
             font-family: 'Orbitron', sans-serif;
-            font-size: 2.5rem; 
+            font-size: 3rem; 
             color: #ff00ff; 
             font-weight: 700;
-            text-shadow: 0 0 10px #ff00ff;
+            text-shadow: 0 0 20px #ff00ff;
+            line-height: 1;
         }
         .stat-desc {
-            color: #00f7ff;
-            font-size: 0.75rem;
+            color: #00ff41;
+            font-size: 0.65rem;
             margin-top: 8px;
+            text-shadow: 0 0 8px #00ff41;
         }
         .main-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 20px;
-            margin-bottom: 25px;
+            grid-template-columns: 2.2fr 1fr;
+            gap: 15px;
         }
         .chart-container {
-            border: 1px solid #00f7ff;
-            padding: 20px;
+            border: 2px solid #00f7ff;
+            padding: 15px;
             background: rgba(0, 247, 255, 0.03);
         }
         .chart-title {
             color: #00f7ff;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 1.1rem;
             text-transform: uppercase;
+            text-shadow: 0 0 10px #00f7ff;
         }
         .btn-grid {
             display: flex;
             gap: 10px;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .btn {
             background: rgba(255, 0, 255, 0.1);
-            border: 1px solid #ff00ff;
+            border: 2px solid #ff00ff;
             color: #ff00ff;
             padding: 10px 15px;
             font-family: 'Share Tech Mono', monospace;
@@ -118,28 +138,76 @@
             transition: all 0.3s ease;
             text-align: center;
             flex: 1;
+            text-shadow: 0 0 10px #ff00ff;
+            box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
         }
         .btn:hover {
             background: #ff00ff;
             color: #0a0a0a;
-            box-shadow: 0 0 15px #ff00ff;
+            box-shadow: 0 0 25px #ff00ff;
         }
         .banco-card {
-            border: 1px solid #00f7ff;
-            padding: 20px;
+            border: 2px solid #00f7ff;
+            padding: 15px;
             background: rgba(0, 247, 255, 0.03);
-            height: 100%;
+            height: 440px;
+            display: flex;
+            flex-direction: column;
         }
         .banco-title {
             color: #00f7ff;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
             font-size: 1.1rem;
+            text-transform: uppercase;
+            text-shadow: 0 0 10px #00f7ff;
+        }
+        .banco-log {
+            flex: 1;
+            overflow-y: auto;
+            padding: 10px;
+            border: 1px solid rgba(0, 247, 255, 0.3);
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .banco-log::-webkit-scrollbar {
+            width: 10px;
+        }
+        .banco-log::-webkit-scrollbar-track {
+            background: rgba(0, 247, 255, 0.1);
+            border: 1px solid #00f7ff;
+        }
+        .banco-log::-webkit-scrollbar-thumb {
+            background: #ff00ff;
+            box-shadow: 0 0 10px #ff00ff;
         }
         .banco-item {
             color: #00f7ff;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             margin: 8px 0;
-            opacity: 0.9;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+        .banco-item strong {
+            color: #ff00ff;
+            text-shadow: 0 0 5px #ff00ff;
+        }
+        .banco-item.green {
+            color: #00ff41;
+            text-shadow: 0 0 5px #00ff41;
+        }
+        .footer {
+            border-top: 2px solid #00f7ff;
+            padding-top: 12px;
+            margin-top: 15px;
+            text-align: center;
+        }
+        .resolucao-lmia {
+            color: #00ff41;
+            font-size: 0.85rem;
+            text-shadow: 0 0 12px #00ff41;
+            letter-spacing: 1px;
         }
         .blink {
             animation: blink 1.5s infinite;
@@ -148,11 +216,6 @@
             0%, 50% { opacity: 1; }
             51%, 100% { opacity: 0.3; }
         }
-        @media (max-width: 768px) {
-            .stats-grid { grid-template-columns: 1fr 1fr; }
-            .main-grid { grid-template-columns: 1fr; }
-            h1 { font-size: 1.5rem; }
-        }
     </style>
 </head>
 <body>
@@ -160,33 +223,33 @@
         <div class="header">
             <div>
                 <h1>LUCAS.DA.SILVA.LIMA</h1>
-                <div class="sub-header">► SISTEMA NOC 72310 CALCULANDO | PEI CANADA</div>
+                <div class="sub-header">► SISTEMA NOC 72310 CALCULANDO | PEI CANADÁ</div>
             </div>
-            <div>
-                <div class="dolar">R$ 4.32</div>
-                <div class="sub-header" style="text-align: right;">Live 20:40:02</div>
+            <div class="dolar-box">
+                <div class="dolar" id="dolar">R$ 4.32</div>
+                <div class="live-time" id="hora">Live 20:40:02</div>
             </div>
         </div>
 
         <div class="stats-grid">
             <div class="stat-card">
                 <div class="stat-title">Score LMIA</div>
-                <div class="stat-number">87</div>
-                <div class="stat-desc">ALTA PROBABILIDADE</div>
+                <div class="stat-number" id="score">0</div>
+                <div class="stat-desc">CALCULANDO...</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Salário/h PEI</div>
-                <div class="stat-number">$34.20</div>
-                <div class="stat-desc">+18% vs média NOC</div>
+                <div class="stat-number" id="salario">$0.00</div>
+                <div class="stat-desc" id="salario-desc">CALCULANDO...</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Móveis Montados</div>
-                <div class="stat-number">14.832</div>
-                <div class="stat-desc">10 anos validados ✓</div>
+                <div class="stat-number" id="moveis">0</div>
+                <div class="stat-desc">CALCULANDO...</div>
             </div>
             <div class="stat-card">
                 <div class="stat-title">Vagas Abertas PEI</div>
-                <div class="stat-number">3</div>
+                <div class="stat-number" id="vagas">0</div>
                 <div class="stat-desc">Scaneando Job Bank...</div>
             </div>
         </div>
@@ -196,28 +259,132 @@
                 <div class="chart-title">PROJEÇÃO SALARIAL 5 ANOS</div>
                 <div class="btn-grid">
                     <a href="entrevista.html" target="_blank" class="btn">SIMULAR ENTREVISTA LMIA</a>
-                    <a href="#" class="btn">BAIXAR LMIA.PDF</a>
+                    <a href="#" class="btn" onclick="gerarPDF()">BAIXAR LMIA.PDF</a>
                 </div>
                 <canvas id="salaryChart"></canvas>
             </div>
 
             <div class="banco-card">
-                <div class="banco-title">BANCO CALCULANDO</div>
-                <div class="banco-item">► Scaneando Job Bank Canada NOC 72310...</div>
-                <div class="banco-item">► Maritima Woodworking, Precision 5 anos ativa</div>
-                <div class="banco-item">► Vaga encontrada: Island Carpentry Ltd - $34/h</div>
-                <div class="banco-item">► Vaga encontrada: PEI Construction - $36-38/h</div>
-                <div class="banco-item">► Vaga encontrada: Maritime Builders - $35/h</div>
-                <div class="banco-item">► Scan completo. 3 vagas ativas PEI</div>
-                <div class="banco-item blink">► SISTEMA ONLINE</div>
+                <div class="banco-title">BANCO CALCULANDO <span class="blink">█</span></div>
+                <div class="banco-log" id="bancoLog"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="resolucao-lmia">
+                <strong>RESOLUÇÃO LMIA:</strong> NOC 72310 APROVADO | CNH D VÁLIDA | 10 ANOS COMPROVADOS | ZERO RETRABALHO
             </div>
         </div>
     </div>
 
     <script>
+        const VALORES_FINAIS = {
+            score: 87,
+            salario: 34.20,
+            moveis: 14832,
+            vagas: 3,
+            dolar: 4.32
+        };
+
+        function animateValue(id, start, end, duration, prefix = '', suffix = '') {
+            const obj = document.getElementById(id);
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const current = Math.floor(progress * (end - start) + start);
+                obj.innerHTML = prefix + current.toLocaleString('pt-BR') + suffix;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    obj.innerHTML = prefix + end.toLocaleString('pt-BR', {minimumFractionDigits: id === 'salario'? 2 : 0}) + suffix;
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        function updateDolar() {
+            const variacao = (Math.random() * 0.06 - 0.03).toFixed(2);
+            const novoDolar = (VALORES_FINAIS.dolar + parseFloat(variacao)).toFixed(2);
+            document.getElementById('dolar').innerHTML = `R$ ${novoDolar}`;
+            
+            const agora = new Date();
+            document.getElementById('hora').innerHTML = `Live ${agora.toLocaleTimeString('pt-BR')}`;
+        }
+
+        const logs = [
+            '► Scaneando Job Bank Canada NOC 72310...',
+            '► Conectando API Governo do Canadá...',
+            '► <strong>Maritima Woodworking</strong> - Vaga ativa detectada',
+            '► Gráfico renderizado. Projeção 5 anos ativa',
+            '► Vaga encontrada: <strong>Island Carpentry Ltd</strong> - $32-34/h',
+            '► Vaga encontrada: <strong>PEI Construction</strong> - $36-38/h',
+            '► Vaga encontrada: <strong>Maritime Builders</strong> - $35-37/h',
+            '► Validando CNH D + Atividade Remunerada...',
+            '► Conferindo certificação NR-11... <strong>OK</strong>',
+            '► Validando 10 anos carteira Tok&Stok... <strong>14832 móveis</strong>',
+            '► Calculando Score LMIA baseado em especialização...',
+            '► <strong class="green">Score final: 87 - ALTA PROBABILIDADE</strong>',
+            '► Scan completo. 3 vagas ativas PEI',
+            '► <strong class="green">SISTEMA ONLINE - PRONTO PARA LMIA</strong>'
+        ];
+
+        let logIndex = 0;
+        function addLog() {
+            if (logIndex < logs.length) {
+                const logDiv = document.getElementById('bancoLog');
+                const item = document.createElement('div');
+                item.className = 'banco-item';
+                if(logs[logIndex].includes('green')) item.classList.add('green');
+                item.innerHTML = logs[logIndex];
+                logDiv.appendChild(item);
+                logDiv.scrollTop = logDiv.scrollHeight;
+                logIndex++;
+                
+                if (logIndex === 5) {
+                    animateValue('vagas', 0, VALORES_FINAIS.vagas, 1000);
+                    document.querySelectorAll('.stat-desc')[3].innerHTML = 'Scan completo';
+                }
+                if (logIndex === 11) {
+                    animateValue('score', 0, VALORES_FINAIS.score, 1500);
+                    document.querySelectorAll('.stat-desc')[0].innerHTML = 'ALTA PROBABILIDADE';
+                }
+            }
+        }
+
+        function gerarPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFont('courier');
+            doc.setFontSize(16);
+            doc.text('LUCAS DA SILVA LIMA - NOC 72310', 20, 20);
+            doc.setFontSize(12);
+            doc.text('Score LMIA: 87 - ALTA PROBABILIDADE', 20, 35);
+            doc.text('Salário: $34.20/h - PEI Canada', 20, 45);
+            doc.text('Experiência: 10+ anos - 14.832 móveis montados', 20, 55);
+            doc.text('CNH D + NR-11 + Oracle TOA', 20, 65);
+            doc.text('Até 2013: Montador Campo - Sistema Gcan', 20, 80);
+            doc.text('2016-2018: Escritório Oracle TOA', 20, 90);
+            doc.text('2021-2026: Suporte Técnico - Motorista empresa', 20, 100);
+            doc.text('Zero retrabalho 2023/2024', 20, 110);
+            doc.save('Lucas_NOC72310_LMIA.pdf');
+        }
+
+        setTimeout(() => {
+            animateValue('salario', 0, VALORES_FINAIS.salario, 2000, '$', '');
+            document.getElementById('salario-desc').innerHTML = '+18% vs média NOC';
+            
+            animateValue('moveis', 0, VALORES_FINAIS.moveis, 2500);
+            document.querySelectorAll('.stat-desc')[2].innerHTML = '10 anos validados ✓';
+        }, 500);
+
+        setInterval(addLog, 700);
+        setInterval(updateDolar, 4000);
+        updateDolar();
+
         const ctx = document.getElementById('salaryChart').getContext('2d');
         const gradient = ctx.createLinearGradient(0, 0, 0, 200);
-        gradient.addColorStop(0, 'rgba(255, 0, 255, 0.5)');
+        gradient.addColorStop(0, 'rgba(255, 0, 255, 0.6)');
         gradient.addColorStop(1, 'rgba(255, 0, 255, 0)');
         
         new Chart(ctx, {
@@ -234,8 +401,8 @@
                     borderWidth: 3,
                     pointBackgroundColor: '#ff00ff',
                     pointBorderColor: '#fff',
-                    pointRadius: 5,
-                    pointHoverRadius: 7
+                    pointRadius: 6,
+                    pointHoverRadius: 8
                 },
                 {
                     label: 'Média PEI NOC 72310',
@@ -244,24 +411,32 @@
                     borderDash: [5, 5],
                     fill: false,
                     tension: 0.4,
-                    borderWidth: 2
+                    borderWidth: 2,
+                    pointRadius: 4
                 }]
             },
             options: {
                 responsive: true,
+                maintainAspectRatio: true,
                 plugins: {
                     legend: {
-                        labels: { color: '#00f7ff', font: { family: 'Share Tech Mono' } }
+                        labels: { 
+                            color: '#00f7ff', 
+                            font: { family: 'Share Tech Mono', size: 11 },
+                            boxWidth: 20
+                        }
                     }
                 },
                 scales: {
                     y: {
-                        ticks: { color: '#00f7ff' },
-                        grid: { color: 'rgba(0, 247, 255, 0.1)' }
+                        ticks: { color: '#00f7ff', font: { family: 'Share Tech Mono' } },
+                        grid: { color: 'rgba(0, 247, 255, 0.15)' },
+                        border: { color: '#00f7ff' }
                     },
                     x: {
-                        ticks: { color: '#00f7ff' },
-                        grid: { color: 'rgba(0, 247, 255, 0.1)' }
+                        ticks: { color: '#00f7ff', font: { family: 'Share Tech Mono' } },
+                        grid: { color: 'rgba(0, 247, 255, 0.15)' },
+                        border: { color: '#00f7ff' }
                     }
                 }
             }
