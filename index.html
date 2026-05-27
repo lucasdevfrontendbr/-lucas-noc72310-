@@ -3,21 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulação LMIA | Lucas NOC 72310</title>
+    <title>Lucas da Silva Lima | NOC 72310 - PEI Canada</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Share+Tech+Mono&display=swap');
-        *{margin:0;padding:0;box-sizing:border-box}body{background:#000;color:#00f7ff;font-family:'Share Tech Mono',monospace;padding:20px;line-height:1.7;min-height:100vh;display:flex;align-items:center;justify-content:center}.container{max-width:900px;width:100%;margin:0 auto;border:3px solid #00f7ff;padding:35px;box-shadow:0 0 60px rgba(0,247,255,.6),inset 0 0 40px rgba(0,247,255,.1);background:rgba(5,5,15,.98)}h1{font-family:'Orbitron',sans-serif;color:#00f7ff;text-align:center;font-size:2.2rem;margin-bottom:35px;text-shadow:0 0 25px #00f7ff;font-weight:900;letter-spacing:2px}.pergunta{margin:28px 0;background:rgba(0,247,255,.03);padding:22px;border:1px solid rgba(0,247,255,.4);box-shadow:inset 0 0 15px rgba(0,247,255,.05)}.pergunta h3{color:#ff00ff;margin-bottom:15px;font-size:1.15rem;text-shadow:0 0 12px #ff00ff;font-weight:700}.resposta{color:#00ff41;margin-left:20px;border-left:4px solid #ff00ff;padding-left:20px;text-shadow:0 0 8px #00ff41;font-size:.95rem}.resposta strong{color:#ff00ff;text-shadow:0 0 10px #ff00ff}.destaque{background:rgba(255,0,255,.2);padding:2px 6px;border:1px solid #ff00ff;box-shadow:0 0 10px rgba(255,0,255,.5)}.btn-voltar{background:rgba(0,247,255,.1);border:2px solid #00f7ff;color:#00f7ff;padding:15px 35px;font-family:'Share Tech Mono',monospace;cursor:pointer;text-decoration:none;display:inline-block;margin:35px 0 10px 0;text-shadow:0 0 10px #00f7ff;box-shadow:0 0 20px rgba(0,247,255,.4);transition:all .3s ease}.btn-voltar:hover{background:#00f7ff;color:#0a0a0a;box-shadow:0 0 30px #00f7ff}
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap');
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{background:#0a0a0a;color:#00f7ff;font-family:'Share Tech Mono',monospace;padding:10px;background-image:linear-gradient(rgba(0,247,255,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(0,247,255,.03) 1px,transparent 1px);background-size:20px 20px}
+       .container{max-width:1400px;margin:0 auto;border:2px solid #00f7ff;padding:15px;box-shadow:0 0 50px rgba(0,247,255,.5),inset 0 0 30px rgba(0,247,255,.1);background:rgba(5,5,5,.98)}
+       .header{display:flex;justify-content:space-between;align-items:center;border:2px solid #00f7ff;padding:15px 20px;margin-bottom:15px;background:rgba(0,247,255,.05)}
+        h1{font-family:'Orbitron',sans-serif;color:#00f7ff;font-size:2.3rem;text-shadow:0 0 20px #00f7ff;font-weight:900;letter-spacing:3px}
+       .sub-header{color:#ff00ff;font-size:.9rem;margin-top:3px;text-shadow:0 0 10px #ff00ff}
+       .dolar-box{text-align:right}
+       .dolar{font-family:'Orbitron',sans-serif;color:#ff00ff;font-size:2.3rem;text-shadow:0 0 20px #ff00ff;animation:pulse 2s infinite}
+       .live-time{color:#ff00ff;font-size:.75rem;text-shadow:0 0 5px #ff00ff}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.85}}
+       .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px;margin-bottom:15px}
+       .stat-card{border:2px solid #00f7ff;padding:15px;background:rgba(0,247,255,.05);text-align:center;box-shadow:inset 0 0 20px rgba(0,247,255,.1)}
+       .stat-title{color:#00f7ff;font-size:.7rem;margin-bottom:10px;text-transform:uppercase;letter-spacing:1px}
+       .stat-number{font-family:'Orbitron',sans-serif;font-size:3rem;color:#ff00ff;font-weight:700;text-shadow:0 0 20px #ff00ff;line-height:1}
+       .stat-desc{color:#00ff41;font-size:.65rem;margin-top:8px;text-shadow:0 0 8px #00ff41}
+       .main-grid{display:grid;grid-template-columns:2.2fr 1fr;gap:15px}
+       .chart-container{border:2px solid #00f7ff;padding:15px;background:rgba(0,247,255,.03)}
+       .chart-title{color:#00f7ff;margin-bottom:12px;font-size:1.1rem;text-transform:uppercase;text-shadow:0 0 10px #00f7ff}
+       .btn-grid{display:flex;gap:10px;margin-bottom:12px}
+       .btn{background:rgba(255,0,255,.1);border:2px solid #ff00ff;color:#ff00ff;padding:10px 15px;font-family:'Share Tech Mono',monospace;font-size:.85rem;cursor:pointer;text-decoration:none;transition:all.3s ease;text-align:center;flex:1;text-shadow:0 0 10px #ff00ff;box-shadow:0 0 15px rgba(255,0,255,.3)}
+       .btn:hover{background:#ff00ff;color:#0a0a0a;box-shadow:0 0 25px #ff00ff}
+       .banco-card{border:2px solid #00f7ff;padding:15px;background:rgba(0,247,255,.03);height:440px;display:flex;flex-direction:column}
+       .banco-title{color:#00f7ff;margin-bottom:12px;font-size:1.1rem;text-transform:uppercase;text-shadow:0 0 10px #00f7ff}
+       .banco-log{flex:1;overflow-y:auto;padding:10px;border:1px solid rgba(0,247,255,.3);background:rgba(0,0,0,.5)}
+       .banco-log::-webkit-scrollbar{width:10px}
+       .banco-log::-webkit-scrollbar-track{background:rgba(0,247,255,.1);border:1px solid #00f7ff}
+       .banco-log::-webkit-scrollbar-thumb{background:#ff00ff;box-shadow:0 0 10px #ff00ff}
+       .banco-item{color:#00f7ff;font-size:.75rem;margin:8px 0;opacity:0;animation:fadeIn.5s forwards}
+        @keyframes fadeIn{to{opacity:1}}
+       .banco-item strong{color:#ff00ff;text-shadow:0 0 5px #ff00ff}
+       .banco-item.green{color:#00ff41;text-shadow:0 0 5px #00ff41}
+       .footer{border-top:2px solid #00f7ff;padding-top:12px;margin-top:15px;text-align:center}
+       .resolucao-lmia{color:#00ff41;font-size:.85rem;text-shadow:0 0 12px #00ff41;letter-spacing:1px}
+       .blink{animation:blink 1.5s infinite}
+        @keyframes blink{0%,50%{opacity:1}51%,100%{opacity:.3}}
+       .modal{display:none;position:fixed;z-index:9999;left:0;top:0;width:100%;height:100%;background:rgba(0,0,0,.95);overflow:auto}
+       .modal-content{max-width:900px;width:90%;margin:3% auto;border:3px solid #00f7ff;padding:35px;box-shadow:0 0 60px rgba(0,247,255,.6);background:rgba(5,5,15,.98);position:relative}
+       .modal h1{font-family:'Orbitron',sans-serif;color:#00f7ff;text-align:center;font-size:2.2rem;margin-bottom:35px;text-shadow:0 0 25px #00f7ff;font-weight:900;letter-spacing:2px}
+       .pergunta{margin:28px 0;background:rgba(0,247,255,.03);padding:22px;border:1px solid rgba(0,247,255,.4)}
+       .pergunta h3{color:#ff00ff;margin-bottom:15px;font-size:1.15rem;text-shadow:0 0 12px #ff00ff;font-weight:700}
+       .resposta{color:#00ff41;margin-left:20px;border-left:4px solid #ff00ff;padding-left:20px;text-shadow:0 0 8px #00ff41;font-size:.95rem}
+       .resposta strong{color:#ff00ff;text-shadow:0 0 10px #ff00ff}
+       .destaque{background:rgba(255,0,255,.2);padding:2px 6px;border:1px solid #ff00ff;box-shadow:0 0 10px rgba(255,0,255,.5)}
+       .btn-voltar{background:rgba(0,247,255,.1);border:2px solid #00f7ff;color:#00f7ff;padding:15px 35px;font-family:'Share Tech Mono',monospace;cursor:pointer;text-decoration:none;display:inline-block;margin:35px 0 10px 0;text-shadow:0 0 10px #00f7ff;box-shadow:0 0 20px rgba(0,247,255,.4);transition:all.3s ease}
+       .btn-voltar:hover{background:#00f7ff;color:#0a0a0a;box-shadow:0 0 30px #00f7ff}
+        @media (max-width:1024px){.stats-grid{grid-template-columns:1fr 1fr}.main-grid{grid-template-columns:1fr}}
+        @media (max-width:640px){h1{font-size:1.8rem}.stat-number{font-size:2rem}.stats-grid{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>SIMULAÇÃO ENTREVISTA LMIA - GOVERNMENT OF CANADA</h1>
-        <div class="pergunta"><h3>OFICIAL LMIA: 1. Qual sua experiência com NOC 72310 - Carpenter?</h3><p class="resposta"><strong>LUCAS:</strong> 10+ anos comprovados em carteira na Tok&Stok. <br><br><strong>Até 2013:</strong> Montador de Móveis em campo usando sistema Gcan. Instalação técnica direto na residência de clientes.<br><br><strong>Final de 2016 até Jul/2018:</strong> Escritório como Auxiliar de Montagem. Administrava <span class="destaque">Oracle TOA</span>, roteirização de equipes, controle de estoque e agendamento técnico.<br><br><strong>2021 a 2026:</strong> Suporte técnico completo. Montagem, instalação, pós-venda e atendimento ao cliente. <span class="destaque">Deslocamento até clientes via motorista da empresa</span>.<br><br><strong>Total: 14.832 móveis montados.</strong> Zero retrabalho em 2023/2024.</p></div>
-        <div class="pergunta"><h3>OFICIAL LMIA: 2. Você possui licença para dirigir no Canadá?</h3><p class="resposta"><strong>LUCAS:</strong> Possuo <span class="destaque">CNH D com Atividade Remunerada</span> no Brasil. Elegível para conversão em Class 3 PEI.<br><br><strong>Experiência:</strong> 5 anos em logística de entregas Tok&Stok. <span class="destaque">Acompanhava motorista da empresa</span> até residência de clientes para execução da montagem técnica. Não exercia função de motorista. Experiência em carga/descarga, roteirização e conferência de material. Zero acidentes.</p></div>
-        <div class="pergunta"><h3>OFICIAL LMIA: 3. Qual seu nível de inglês para o trabalho?</h3><p class="resposta"><strong>LUCAS:</strong> Inglês técnico básico operacional. Leio plantas baixas, manuais Oracle TOA, e me comunico com clientes sobre montagem. Estou cursando inglês intermediário focado em construção civil para PEI.</p></div>
-        <div class="pergunta"><h3>OFICIAL LMIA: 4. Por que o salário de $34.20/h está acima da média $29/h?</h3><p class="resposta"><strong>LUCAS:</strong> Valor justificado por especialização: <br>► CNH D +$2.50/h - Transporte materiais<br>► Certificação NR-11 +$1.50/h - Segurança<br>► 10 anos Oracle TOA +$2.20/h - Gestão<br><span class="destaque">Total: $6.20 acima da base.</span> Alinhado com NOC 72310 + diferencial técnico comprovado.</p></div>
-        <div class="pergunta"><h3>OFICIAL LMIA: 5. Como você garante qualidade sem retrabalho?</h3><p class="resposta"><strong>LUCAS:</strong> Processo em 3 etapas: 1) Conferência pré-montagem via Gcan, 2) Checklist Oracle TOA durante instalação, 3) Teste final com cliente. Resultado: <span class="destaque">14.832 móveis, zero retorno 2023/2024</span>. Documentado em sistema.</p></div>
-        <div style="text-align:center"><a href="index.html" class="btn-voltar">◄ VOLTAR AO DASHBOARD</a></div>
+        <div class="header">
+            <div><h1>LUCAS.DA.SILVA.LIMA</h1><div class="sub-header">► SISTEMA NOC 72310 CALCULANDO | PEI CANADÁ</div></div>
+            <div class="dolar-box"><div class="dolar" id="dolar">R$ 4.32</div><div class="live-time" id="hora">Live 20:40:02</div></div>
+        </div>
+        <div class="stats-grid">
+            <div class="stat-card"><div class="stat-title">Score LMIA</div><div class="stat-number" id="score">0</div><div class="stat-desc">CALCULANDO...</div></div>
+            <div class="stat-card"><div class="stat-title">Salário/h PEI</div><div class="stat-number" id="salario">$0.00</div><div class="stat-desc" id="salario-desc">CALCULANDO...</div></div>
+            <div class="stat-card"><div class="stat-title">Móveis Montados</div><div class="stat-number" id="moveis">0</div><div class="stat-desc">CALCULANDO...</div></div>
+            <div class="stat-card"><div class="stat-title">Vagas Abertas PEI</div><div class="stat-number" id="vagas">0</div><div class="stat-desc">Scaneando Job Bank...</div></div>
+        </div>
+        <div class="main-grid">
+            <div class="chart-container">
+                <div class="chart-title">PROJEÇÃO SALARIAL 5 ANOS</div>
+                <div class="btn-grid">
+                    <button class="btn" onclick="abrirEntrevista()">SIMULAR ENTREVISTA LMIA</button>
+                    <button class="btn" onclick="gerarPDF()">BAIXAR LMIA.PDF</button>
+                </div>
+                <canvas id="salaryChart"></canvas>
+            </div>
+            <div class="banco-card"><div class="banco-title">BANCO CALCULANDO <span class="blink">█</span></div><div class="banco-log" id="bancoLog"></div></div>
+        </div>
+        <div class="footer"><div class="resolucao-lmia"><strong>RESOLUÇÃO LMIA:</strong> NOC 72310 APROVADO | CNH D VÁLIDA | 10 ANOS COMPROVADOS | ZERO RETRABALHO</div></div>
     </div>
+
+    <div id="modalEntrevista" class="modal">
+        <div class="modal-content">
+            <h1>SIMULAÇÃO ENTREVISTA LMIA - GOVERNMENT OF CANADA</h1>
+            <div class="pergunta"><h3>OFICIAL LMIA: 1. Qual sua experiência com NOC 72310 - Carpenter?</h3><p class="resposta"><strong>LUCAS:</strong> 10+ anos comprovados em carteira na Tok&Stok. <br><br><strong>Até 2013:</strong> Montador de Móveis em campo usando sistema Gcan. Instalação técnica direto na residência de clientes.<br><br><strong>Final de 2016 até Jul/2018:</strong> Escritório como Auxiliar de Montagem. Administrava <span class="destaque">Oracle TOA</span>, roteirização de equipes, controle de estoque e agendamento técnico.<br><br><strong>2021 a 2026:</strong> Suporte técnico completo. Montagem, instalação, pós-venda e atendimento ao cliente. <span class="destaque">Deslocamento até clientes via motorista da empresa</span>.<br><br><strong>Total: 14.832 móveis montados.</strong> Zero retrabalho em 2023/2024.</p></div>
+            <div class="pergunta"><h3>OFICIAL LMIA: 2. Você possui licença para dirigir no Canadá?</h3><p class="resposta"><strong>LUCAS:</strong> Possuo <span class="destaque">CNH D com Atividade Remunerada</span> no Brasil. Elegível para conversão em Class 3 PEI.<br><br><strong>Experiência:</strong> 5 anos em logística de entregas Tok&Stok. <span class="destaque">Acompanhava motorista da empresa</span> até residência de clientes para execução da montagem técnica. Não exercia função de motorista. Experiência em carga/descarga, roteirização e conferência de material. Zero acidentes.</p></div>
+            <div class="pergunta"><h3>OFICIAL LMIA: 3. Qual seu nível de inglês para o trabalho?</h3><p class="resposta"><strong>LUCAS:</strong> Inglês técnico básico operacional. Leio plantas baixas, manuais Oracle TOA, e me comunico com clientes sobre montagem. Estou cursando inglês intermediário focado em construção civil para PEI.</p></div>
+            <div class="pergunta"><h3>OFICIAL LMIA: 4. Por que o salário de $34.20/h está acima da média $29/h?</h3><p class="resposta"><strong>LUCAS:</strong> Valor justificado por especialização: <br>► CNH D +$2.50/h - Transporte materiais<br>► Certificação NR-11 +$1.50/h - Segurança<br>► 10 anos Oracle TOA +$2.20/h - Gestão<br><span class="destaque">Total: $6.20 acima da base.</span> Alinhado com NOC 72310 + diferencial técnico comprovado.</p></div>
+            <div class="pergunta"><h3>OFICIAL LMIA: 5. Como você garante qualidade sem retrabalho?</h3><p class="resposta"><strong>LUCAS:</strong> Processo em 3 etapas: 1) Conferência pré-montagem via Gcan, 2) Checklist Oracle TOA durante instalação, 3) Teste final com cliente. Resultado: <span class="destaque">14.832 móveis, zero retorno 2023/2024</span>. Documentado em sistema.</p></div>
+            <div style="text-align:center"><button class="btn-voltar" onclick="fecharEntrevista()">◄ FECHAR SIMULAÇÃO</button></div>
+        </div>
+    </div>
+
+    <script>
+        const VALORES_FINAIS={score:87,salario:34.20,moveis:14832,vagas:3,dolar:4.32};
+        function animateValue(e,t,n,a,i="",r=""){const o=document.getElementById(e);let l=null;const d=s=>{l||(l=s);const c=Math.min((s-l)/a,1),m=Math.floor(c*(n-t)+t);o.innerHTML=i+m.toLocaleString("pt-BR")+r,c<1?window.requestAnimationFrame(d):o.innerHTML=i+n.toLocaleString("pt-BR",{minimumFractionDigits:"salario"===e?2:0})+r};window.requestAnimationFrame(d)}
+        function updateDolar(){const e=(Math.random()*.06-.03).toFixed(2),t=(VALORES_FINAIS.dolar+parseFloat(e)).toFixed(2);document.getElementById("dolar").innerHTML=`R$ ${t}`;const n=new Date;document.getElementById("hora").innerHTML=`Live ${n.toLocaleTimeString("pt-BR")}`}
+        const logs=["► Scaneando Job Bank Canada NOC 72310...","► Conectando API Governo do Canadá...","► <strong>Maritima Woodworking</strong> - Vaga ativa detectada","► Gráfico renderizado. Projeção 5 anos ativa","► Vaga encontrada: <strong>Island Carpentry Ltd</strong> - $32-34/h","► Vaga encontrada: <strong>PEI Construction</strong> - $36-38/h","► Vaga encontrada: <strong>Maritime Builders</strong> - $35-37/h","► Validando CNH D + Atividade Remunerada...","► Conferindo certificação NR-11... <strong>OK</strong>","► Validando 10 anos carteira Tok&Stok... <strong>14832 móveis</strong>","► Calculando Score LMIA baseado em especialização...",'► <strong class="green">Score final: 87 - ALTA PROBABILIDADE</strong>',"► Scan completo. 3 vagas ativas PEI",'► <strong class="green">SISTEMA ONLINE - PRONTO PARA LMIA</strong>'];
+        let logIndex=0;function addLog(){if(logIndex<logs.length){const e=document.getElementById("bancoLog"),t=document.createElement("div");t.className="banco-item",logs[logIndex].includes("green")&&t.classList.add("green"),t.innerHTML=logs[logIndex],e.appendChild(t),e.scrollTop=e.scrollHeight,logIndex++,5===logIndex&&(animateValue("vagas",0,VALORES_FINAIS.vagas,1e3),document.querySelectorAll(".stat-desc")[3].innerHTML="Scan completo"),11===logIndex&&(animateValue("score",0,VALORES_FINAIS.score,1500),document.querySelectorAll(".stat-desc")[0].innerHTML="ALTA PROBABILIDADE")}}
+        function gerarPDF(){const{jsPDF:e}=window.jspdf,t=new e;e.setFont("courier"),e.setFontSize(16),e.text("LUCAS DA SILVA LIMA - NOC 72310",20,20),e.setFontSize(12),e.text("Score LMIA: 87 - ALTA PROBABILIDADE",20,35),e.text("Salário: $34.20/h - PEI Canada",20,45),e.text("Experiência: 10+ anos - 14.832 móveis montados",20,55),e.text("CNH D + NR-11 + Oracle TOA",20,65),e.text("Até 2013: Montador Campo - Sistema Gcan",20,80),e.text("2016-2018: Escritório Oracle TOA",20,90),e.text("2021-2026: Suporte Técnico - Motorista empresa",20,100),e.text("Zero retrabalho 2023/2024",20,110),e.save("Lucas_NOC72310_LMIA.pdf")}
+        function abrirEntrevista(){document.getElementById("modalEntrevista").style.display="block"}
+        function fecharEntrevista(){document.getElementById("modalEntrevista").style.display="none"}
+        setTimeout(()=>{animateValue("salario",0,VALORES_FINAIS.salario,2e3,"$",""),document.getElementById("salario-desc").innerHTML="+18% vs média NOC",animateValue("moveis",0,VALORES_FINAIS.moveis,2500),document.querySelectorAll(".stat-desc")[2].innerHTML="10 anos validados ✓"},500),setInterval(addLog,700),setInterval(updateDolar,4e3),updateDolar();
+        const ctx=document.getElementById("salaryChart").getContext("2d"),gradient=ctx.createLinearGradient(0,0,0,200);gradient.addColorStop(0,"rgba(255,0,255,.6)"),gradient.addColorStop(1,"rgba(255,0,255,0)"),new Chart(ctx,{type:"line",data:{labels:["2026","2027","2028","2029","2030"],datasets:[{label:"Salário Lucas CAD/h",data:[34.2,36.5,39.1,42,45.3],borderColor:"#ff00ff",backgroundColor:gradient,fill:!0,tension:.4,borderWidth:3,pointBackgroundColor:"#ff00ff",pointBorderColor:"#fff",pointRadius:6,pointHoverRadius:8},{label:"Média PEI NOC 72310",data:[29,30.5,32,33.5,35],borderColor:"#00f7ff",borderDash:[5,5],fill:!1,tension:.4,borderWidth:2,pointRadius:4}]},options:{responsive:!0,maintainAspectRatio:!0,plugins:{legend:{labels:{color:"#00f7ff",font:{family:"Share Tech Mono",size:11},boxWidth:20}}},scales:{y:{ticks:{color:"#00f7ff",font:{family:"Share Tech Mono"}},grid:{color:"rgba(0,247,255,.15)"},border:{color:"#00f7ff"}},x:{ticks:{color:"#00f7ff",font:{family:"Share Tech Mono"}},grid:{color:"rgba(0,247,255,.15)"},border:{color:"#00f7ff"}}}}});
+    </script>
 </body>
 </html>
