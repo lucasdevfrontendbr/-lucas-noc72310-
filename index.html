@@ -6,50 +6,66 @@
 <title>SISTEMA NOC 72310</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
   background: #02020a;
   color: #00ffff;
   font-family: 'Orbitron', sans-serif;
-  margin: 0;
   padding: 20px;
+  min-height: 100vh;
 }
 .header {
   border: 2px solid #00ffff;
-  padding: 15px;
+  padding: 20px;
   margin-bottom: 20px;
   box-shadow: 0 0 20px #00ffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: rgba(0,255,255,0.03);
 }
-.titulo { font-size: 28px; color: #00ffff; text-shadow: 0 0 10px #00ffff; font-weight: 900; }
-.sub { font-size: 12px; color: #ff00ff; }
-.saldo { font-size: 20px; color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+.titulo { font-size: 28px; color: #00ffff; text-shadow: 0 0 10px #00ffff; font-weight: 900; letter-spacing: 2px; }
+.sub { font-size: 12px; color: #ff00ff; margin-top: 5px; }
+.saldo { font-size: 24px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 700; }
 .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
 .card {
   border: 2px solid #00ffff;
   background: rgba(0,255,255,0.03);
-  padding: 20px 10px;
+  padding: 25px 15px;
   text-align: center;
-  box-shadow: 0 0 15px #00ffff;
-  border-radius: 6px;
+  box-shadow: 0 0 20px #00ffff;
+  border-radius: 8px;
+  transition: 0.3s;
 }
-.card h3 { font-size: 11px; color: #aaa; margin: 0 0 10px 0; }
-.card.valor { font-size: 36px; color: #ff00ff; font-weight: 900; text-shadow: 0 0 10px #ff00ff; }
-.card.info { font-size: 10px; color: #00ff00; margin-top: 5px; }
-.box { border: 2px solid #ff00ff; padding: 15px; margin: 10px 0; box-shadow: 0 0 15px #ff00ff; }
-.botoes { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.card:hover { box-shadow: 0 0 30px #00ffff; }
+.card h3 { font-size: 12px; color: #aaa; margin: 0 0 12px 0; letter-spacing: 1px; }
+.card.valor { font-size: 38px; color: #ff00ff; font-weight: 900; text-shadow: 0 0 15px #ff00ff; margin: 8px 0; }
+.card.info { font-size: 11px; color: #00ff00; margin-top: 8px; }
+.box { 
+  border: 2px solid #ff00ff; 
+  padding: 20px; 
+  margin: 15px 0; 
+  box-shadow: 0 0 20px #ff00ff; 
+  background: rgba(255,0,255,0.03);
+}
+.box h3 { color: #00ffff; margin-bottom: 15px; text-shadow: 0 0 8px #00ffff; }
+.botoes { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
 .btn {
   background: transparent;
   border: 2px solid #ff00ff;
   color: #ff00ff;
-  padding: 12px;
+  padding: 15px;
   font-family: 'Orbitron';
+  font-weight: 700;
   cursor: pointer;
   box-shadow: 0 0 10px #ff00ff;
+  transition: 0.3s;
+  letter-spacing: 1px;
 }
-.btn:hover { background: #ff00ff; color: #000; }
-@media (max-width: 900px) {.grid { grid-template-columns: repeat(2, 1fr); } }
+.btn:hover { background: #ff00ff; color: #000; box-shadow: 0 0 25px #ff00ff; }
+.scan { font-size: 12px; color: #00ff00; margin-top: 8px; }
+@media (max-width: 900px) {.grid { grid-template-columns: repeat(2, 1fr); }}
+@media (max-width: 600px) {.grid { grid-template-columns: 1fr; }.header{flex-direction:column; gap:10px}}
 </style>
 </head>
 <body>
@@ -59,7 +75,7 @@ body {
     <div class="titulo">LUCAS.DA.SILVA.LIMA</div>
     <div class="sub">▶ SISTEMA NOC 72310 CALCULANDO | PEI CANADÁ</div>
   </div>
-  <div class="saldo">R$ 4.32</div>
+  <div class="saldo" id="saldo-reais">R$ 4,32</div>
 </div>
 
 <div class="grid">
@@ -70,18 +86,18 @@ body {
   </div>
   <div class="card">
     <h3>SALÁRIO/H PEI</h3>
-    <div class="valor" id="salario">0</div>
-    <div class="info">+10% vs média NOC</div>
+    <div class="valor" id="salario">$0,00</div>
+    <div class="info">+10% VS MÉDIA NOC</div>
   </div>
   <div class="card">
     <h3>MÓVEIS MONTADOS</h3>
     <div class="valor" id="moveis">0</div>
-    <div class="info">10 anos validados ✓</div>
+    <div class="info">10 ANOS VALIDADOS ✓</div>
   </div>
   <div class="card">
     <h3>VAGAS ABERTAS PEI</h3>
     <div class="valor" id="vagas">0</div>
-    <div class="info">Scan completo ✓</div>
+    <div class="info">SCAN COMPLETO ✓</div>
   </div>
 </div>
 
@@ -95,33 +111,57 @@ body {
 
 <div class="box">
   <h3>BANCO CALCULANDO...</h3>
-  <p>> Scanning Job Bank Canada NOC 72310...</p>
+  <p class="scan">> Scanning Job Bank Canada NOC 72310...</p>
 </div>
 
 <script>
-// Animação contando
+// Função pra animar contando
 function animateValue(id, start, end, duration, prefix='', suffix='') {
   const obj = document.getElementById(id);
   let startTime = null;
   const step = (time) => {
     if (!startTime) startTime = time;
     const progress = Math.min((time - startTime) / duration, 1);
-    let value = Math.floor(progress * (end - start) + start);
-    if(id === 'salario') value = (progress * (end - start) + start).toFixed(2);
-    obj.innerHTML = prefix + value.toString().replace('.',',').replace(/\B(?=(\d{3})+(?!\d))/g, ".") + suffix;
+    let value = progress * (end - start) + start;
+    if(id === 'salario') value = value.toFixed(2);
+    else value = Math.floor(value);
+    
+    let formatted = value.toString().replace('.',',');
+    if(id!== 'salario') formatted = formatted.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+    
+    obj.innerHTML = prefix + formatted + suffix;
     if (progress < 1) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
 }
 
-// API Banco Central - Dólar Canadense em TEMPO REAL
+// API Dólar Canadense - SALÁRIO/H
 async function buscarCotacao() {
   try {
     const response = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.3691/dados/ultimos/1?formato=json&_=' + Date.now());
     const data = await response.json();
     const valor = parseFloat(data[0].valor);
     animateValue("salario", 0, valor, 1500, '$', '');
-  } catch(e) { document.getElementById('salario').innerText = '$34,20'; }
+  } catch(e) { 
+    document.getElementById('salario').innerText = '$34,20'; 
+  }
+}
+
+// API Saldo em R$ - Atualiza em tempo real
+async function atualizarSaldoReais() {
+  try {
+    // Pega cotação CAD para converter o 4.32
+    const response = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.3691/dados/ultimos/1?formato=json&_=' + Date.now());
+    const data = await response.json();
+    const cotacaoCad = parseFloat(data[0].valor);
+    
+    // 4.32 * cotação atual do CAD
+    const saldoEmBRL = (4.32 * cotacaoCad).toFixed(2);
+    
+    document.getElementById('saldo-reais').innerText = `R$ ${saldoEmBRL.replace('.', ',')}`;
+  } catch(e) {
+    document.getElementById('saldo-reais').innerText = `R$ 4,32`;
+  }
 }
 
 // Inicia tudo
@@ -130,10 +170,14 @@ window.onload = () => {
   animateValue("moveis", 0, 14832, 2000);
   animateValue("vagas", 0, 3, 800);
   buscarCotacao();
+  atualizarSaldoReais();
 }
 
-// Atualiza cotação a cada 30 segundos
-setInterval(buscarCotacao, 30000);
+// Atualiza APIs a cada 30 segundos
+setInterval(() => {
+  buscarCotacao();
+  atualizarSaldoReais();
+}, 30000);
 </script>
 
 </body>
