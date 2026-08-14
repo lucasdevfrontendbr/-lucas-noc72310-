@@ -1,83 +1,80 @@
-import { useState, useEffect } from 'react';
-import { RefreshCw } from 'lucide-react'; // npm i lucide-react se não tiver
-
-export default function CardVagasPortugal() {
-  const [vagas, setVagas] = useState(47);
-  const [loading, setLoading] = useState(true);
-  const [lastUpdate, setLastUpdate] = useState('');
-
-  // "API FAKE" - Simula busca no Landing.jobs
-  const fetchVagas = async () => {
-    setLoading(true);
-    
-    // Simula tempo de rede 1.2s
-    await new Promise(resolve => setTimeout(resolve, 1200));
-    
-    // Gera número aleatório realista: 40 a 65 vagas
-    const novasVagas = Math.floor(Math.random() * 25) + 40;
-    setVagas(novasVagas);
-    
-    // Atualiza horário
-    const agora = new Date().toLocaleTimeString('pt-PT', { 
-      hour: '2-digit', 
-      minute: '2-digit' 
-    });
-    setLastUpdate(agora);
-    setLoading(false);
-  };
-
-  // Roda 1x quando abre a página
-  useEffect(() => {
-    fetchVagas();
-  }, []);
-
-  return (
-    <div className="bg-[#0a0a1a] border-cyan-500/30 rounded-lg p-4 hover:border-cyan-400 transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,255,255,0.2)]">
-      
-      {/* HEADER */}
-      <div className="flex items-center justify-between mb-2">
-        <p className="text-xs text-gray-400 uppercase tracking-wider">
-          VAGAS REACT ABERTAS PT
-        </p>
-        
-        {/* BOTÃO ATUALIZAR */}
-        <button 
-          onClick={fetchVagas}
-          disabled={loading}
-          className="p-1 rounded hover:bg-cyan-500/10 transition disabled:opacity-50"
-        >
-          <RefreshCw className={`w-4 h-4 text-cyan-400 ${loading ? 'animate-spin' : ''}`} />
-        </button>
-      </div>
-
-      {/* CONTEÚDO */}
-      {loading ? (
-        <div className="space-y-2">
-          <div className="h-8 bg-cyan-500/10 rounded animate-pulse"></div>
-          <div className="h-3 bg-gray-500/10 rounded animate-pulse w-3/4"></div>
-        </div>
-      ) : (
-        <>
-          {/* NÚMERO GRANDE */}
-          <div className="flex items-baseline gap-2">
-            <p className="text-3xl font-bold text-cyan-400">{vagas}</p>
-            <span className="text-xs text-green-400">+{Math.floor(Math.random() * 5) + 8}%</span>
-          </div>
-
-          {/* SUBINFO */}
-          <p className="text-xs text-gray-500 mt-1">
-            Lisboa: {Math.floor(vagas * 0.6)} | Porto: {Math.floor(vagas * 0.25)} | Remoto: {Math.floor(vagas * 0.15)}
-          </p>
-          
-          {/* FOOTER */}
-          <div className="flex items-center gap-2 mt-2">
-            <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-            <p className="text-xs text-gray-500">
-              Última atualização: {lastUpdate}
-            </p>
-          </div>
-        </>
-      )}
-    </div>
-  );
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>SISTEMA NOC</title>
+<style>
+body {
+  background: #000;
+  color: #00ffff;
+  font-family: 'Orbitron', sans-serif;
+  margin: 0;
+  padding: 20px;
 }
+.header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid #ff00ff;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+.nome { color: #00ffff; font-size: 18px; font-weight: bold; }
+.saldo { color: #ff00ff; font-size: 18px; }
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+.card {
+  border: 2px solid #00ffff;
+  background: rgba(0,255,255,0.05);
+  padding: 15px;
+  text-align: center;
+  box-shadow: 0 0 10px #00ffff;
+}
+.card h3 { font-size: 12px; color: #aaa; margin: 0; }
+.card p { font-size: 28px; color: #ff00ff; margin: 5px 0; font-weight: bold; }
+.projecao {
+  margin-top: 20px;
+  border: 2px solid #ff00ff;
+  padding: 10px;
+  box-shadow: 0 0 10px #ff00ff;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="nome">LUCAS.DA.SILVA.LIMA</div>
+  <div class="saldo">R$ 4.32</div>
+</div>
+
+<div class="cards">
+  <div class="card">
+    <h3>SCORE NOC</h3>
+    <p>87</p>
+  </div>
+  <div class="card">
+    <h3>VALOR CAD</h3>
+    <p>$34,20</p>
+  </div>
+  <div class="card">
+    <h3>MOEDAS</h3>
+    <p>14.832</p>
+  </div>
+  <div class="card">
+    <h3>VAGAS</h3>
+    <p>3</p>
+  </div>
+</div>
+
+<div class="projecao">
+  <h3>PROJEÇÃO SALARIAL 5 ANOS</h3>
+</div>
+
+<div class="ranking">
+  <h3>RANKING CALCULADO</h3>
+</div>
+
+</body>
+</html>
