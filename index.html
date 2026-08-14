@@ -26,7 +26,8 @@ body {
 }
 .titulo { font-size: 28px; color: #00ffff; text-shadow: 0 0 10px #00ffff; font-weight: 900; letter-spacing: 2px; }
 .sub { font-size: 12px; color: #ff00ff; margin-top: 5px; }
-.saldo { font-size: 24px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 700; }
+.saldo { font-size: 24px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 700; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
 .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
 .card {
   border: 2px solid #00ffff;
@@ -75,7 +76,7 @@ body {
     <div class="titulo">LUCAS.DA.SILVA.LIMA</div>
     <div class="sub">▶ SISTEMA NOC 72310 CALCULANDO | PEI CANADÁ</div>
   </div>
-  <div class="saldo" id="saldo-reais">R$ 4,32</div>
+  <div class="saldo" id="saldo-reais">R$ 23,77</div>
 </div>
 
 <div class="grid">
@@ -135,32 +136,22 @@ function animateValue(id, start, end, duration, prefix='', suffix='') {
   requestAnimationFrame(step);
 }
 
-// API Dólar Canadense - SALÁRIO/H
+// API Banco Central - Dólar Canadense
 async function buscarCotacao() {
   try {
     const response = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.3691/dados/ultimos/1?formato=json&_=' + Date.now());
     const data = await response.json();
-    const valor = parseFloat(data[0].valor);
-    animateValue("salario", 0, valor, 1500, '$', '');
-  } catch(e) { 
-    document.getElementById('salario').innerText = '$34,20'; 
-  }
-}
-
-// API Saldo em R$ - Atualiza em tempo real
-async function atualizarSaldoReais() {
-  try {
-    // Pega cotação CAD para converter o 4.32
-    const response = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.3691/dados/ultimos/1?formato=json&_=' + Date.now());
-    const data = await response.json();
     const cotacaoCad = parseFloat(data[0].valor);
     
-    // 4.32 * cotação atual do CAD
-    const saldoEmBRL = (4.32 * cotacaoCad).toFixed(2);
+    // Atualiza SALÁRIO/H PEI
+    animateValue("salario", 0, cotacaoCad, 1000, '$', '');
     
+    // Atualiza SALDO R$ do canto: 23.77 * cotação CAD
+    const saldoEmBRL = (23.77 * cotacaoCad).toFixed(2);
     document.getElementById('saldo-reais').innerText = `R$ ${saldoEmBRL.replace('.', ',')}`;
-  } catch(e) {
-    document.getElementById('saldo-reais').innerText = `R$ 4,32`;
+    
+  } catch(e) { 
+    console.log("Erro API BCB");
   }
 }
 
@@ -169,15 +160,11 @@ window.onload = () => {
   animateValue("score", 0, 87, 1200);
   animateValue("moveis", 0, 14832, 2000);
   animateValue("vagas", 0, 3, 800);
-  buscarCotacao();
-  atualizarSaldoReais();
+  buscarCotacao(); // primeira carga
 }
 
-// Atualiza APIs a cada 30 segundos
-setInterval(() => {
-  buscarCotacao();
-  atualizarSaldoReais();
-}, 30000);
+// ATUALIZA A CADA 4 SEGUNDOS - TEMPO REAL
+setInterval(buscarCotacao, 4000);
 </script>
 
 </body>
