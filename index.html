@@ -2,169 +2,92 @@
 <html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SISTEMA NOC 72310</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: #02020a;
-  color: #00ffff;
-  font-family: 'Orbitron', sans-serif;
-  padding: 20px;
-  min-height: 100vh;
-}
-.header {
-  border: 2px solid #00ffff;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 0 20px #00ffff;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: rgba(0,255,255,0.03);
-}
-.titulo { font-size: 28px; color: #00ffff; text-shadow: 0 0 10px #00ffff; font-weight: 900; letter-spacing: 2px; }
-.sub { font-size: 12px; color: #ff00ff; margin-top: 5px; }
-.saldo { font-size: 24px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 700; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
-.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; margin-bottom: 20px; }
-.card {
-  border: 2px solid #00ffff;
-  background: rgba(0,255,255,0.03);
-  padding: 25px 15px;
-  text-align: center;
-  box-shadow: 0 0 20px #00ffff;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-.card:hover { box-shadow: 0 0 30px #00ffff; }
-.card h3 { font-size: 12px; color: #aaa; margin: 0 0 12px 0; letter-spacing: 1px; }
-.card.valor { font-size: 38px; color: #ff00ff; font-weight: 900; text-shadow: 0 0 15px #ff00ff; margin: 8px 0; }
-.card.info { font-size: 11px; color: #00ff00; margin-top: 8px; }
-.box { 
-  border: 2px solid #ff00ff; 
-  padding: 20px; 
-  margin: 15px 0; 
-  box-shadow: 0 0 20px #ff00ff; 
-  background: rgba(255,0,255,0.03);
-}
-.box h3 { color: #00ffff; margin-bottom: 15px; text-shadow: 0 0 8px #00ffff; }
-.botoes { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-.btn {
-  background: transparent;
-  border: 2px solid #ff00ff;
-  color: #ff00ff;
-  padding: 15px;
-  font-family: 'Orbitron';
-  font-weight: 700;
-  cursor: pointer;
-  box-shadow: 0 0 10px #ff00ff;
-  transition: 0.3s;
-  letter-spacing: 1px;
-}
-.btn:hover { background: #ff00ff; color: #000; box-shadow: 0 0 25px #ff00ff; }
-.scan { font-size: 12px; color: #00ff00; margin-top: 8px; }
-@media (max-width: 900px) {.grid { grid-template-columns: repeat(2, 1fr); }}
-@media (max-width: 600px) {.grid { grid-template-columns: 1fr; }.header{flex-direction:column; gap:10px}}
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
+body { background: #000; color: #00ffff; font-family: 'Orbitron', sans-serif; padding: 20px; }
+.header { display: flex; justify-content: space-between; border: 2px solid #00ffff; padding: 20px; box-shadow: 0 0 20px #00ffff; margin-bottom: 20px; }
+.titulo { font-size: 24px; font-weight: 900; text-shadow: 0 0 10px #00ffff; }
+.saldo { font-size: 28px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 900; animation: blink 1s infinite; }
+@keyframes blink { 50% { opacity: 0.7; } }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
+.card { border: 2px solid #00ffff; padding: 20px; text-align: center; box-shadow: 0 0 15px #00ffff; background: rgba(0,255,255,0.03); }
+.card h3 { font-size: 12px; color: #aaa; margin-bottom: 10px; }
+.card p { font-size: 32px; color: #ff00ff; font-weight: 900; }
+.box { border: 2px solid #ff00ff; padding: 15px; margin-top: 15px; box-shadow: 0 0 15px #ff00ff; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div>
-    <div class="titulo">LUCAS.DA.SILVA.LIMA</div>
-    <div class="sub">▶ SISTEMA NOC 72310 CALCULANDO | PEI CANADÁ</div>
-  </div>
-  <div class="saldo" id="saldo-reais">R$ 23,77</div>
+  <div class="titulo">LUCAS.DA.SILVA.LIMA<br><span style="font-size:12px; color:#ff00ff">SISTEMA NOC 72310 | PEI CANADÁ</span></div>
+  <div class="saldo" id="cotacao-cad">R$ 130,78</div>
 </div>
 
 <div class="grid">
   <div class="card">
-    <h3>SCORE LMIA</h3>
-    <div class="valor" id="score">0</div>
-    <div class="info">ALTA PROBABILIDADE</div>
-  </div>
-  <div class="card">
-    <h3>SALÁRIO/H PEI</h3>
-    <div class="valor" id="salario">$0,00</div>
-    <div class="info">+10% VS MÉDIA NOC</div>
-  </div>
-  <div class="card">
     <h3>MÓVEIS MONTADOS</h3>
-    <div class="valor" id="moveis">0</div>
-    <div class="info">10 ANOS VALIDADOS ✓</div>
+    <p id="moveis">0</p>
+    <div style="color:#00ff00; font-size:11px">10 ANOS VALIDADOS ✓</div>
   </div>
   <div class="card">
     <h3>VAGAS ABERTAS PEI</h3>
-    <div class="valor" id="vagas">0</div>
-    <div class="info">SCAN COMPLETO ✓</div>
+    <p id="vagas">0</p>
+    <div style="color:#00ff00; font-size:11px">SCAN COMPLETO ✓</div>
+  </div>
+  <div class="card">
+    <h3>SALÁRIO/H PEI</h3>
+    <p id="salario">$0,00</p>
+    <div style="color:#00ff00; font-size:11px">+10% VS MÉDIA NOC</div>
   </div>
 </div>
 
 <div class="box">
-  <h3>PROJEÇÃO SALARIAL 5 ANOS</h3>
-  <div class="botoes">
-    <button class="btn">SIMULAR ENTREVISTA LMIA</button>
-    <button class="btn">BAIXAR LMIA.PDF</button>
-  </div>
-</div>
-
-<div class="box">
-  <h3>BANCO CALCULANDO...</h3>
-  <p class="scan">> Scanning Job Bank Canada NOC 72310...</p>
+  <button style="width:100%; padding:15px; background:transparent; border:2px solid #ff00ff; color:#ff00ff; font-family:Orbitron; font-weight:700; cursor:pointer;">BAIXAR LMIA.PDF</button>
 </div>
 
 <script>
-// Função pra animar contando
-function animateValue(id, start, end, duration, prefix='', suffix='') {
-  const obj = document.getElementById(id);
-  let startTime = null;
-  const step = (time) => {
-    if (!startTime) startTime = time;
-    const progress = Math.min((time - startTime) / duration, 1);
-    let value = progress * (end - start) + start;
-    if(id === 'salario') value = value.toFixed(2);
-    else value = Math.floor(value);
-    
-    let formatted = value.toString().replace('.',',');
-    if(id!== 'salario') formatted = formatted.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-    
-    obj.innerHTML = prefix + formatted + suffix;
-    if (progress < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
+// Animação dos números
+function animate(id, start, end, time) {
+  let obj = document.getElementById(id);
+  let range = end - start;
+  let step = Math.abs(Math.floor(time / range));
+  let current = start;
+  let timer = setInterval(() => {
+    current += 1;
+    obj.innerHTML = current.toLocaleString('pt-BR');
+    if (current >= end) clearInterval(timer);
+  }, step);
 }
 
-// API Banco Central - Dólar Canadense
-async function buscarCotacao() {
+// API BANCO CENTRAL - Dólar Canadense
+async function atualizarCAD() {
   try {
-    const response = await fetch('https://api.bcb.gov.br/dados/serie/bcdata.sgs.3691/dados/ultimos/1?formato=json&_=' + Date.now());
-    const data = await response.json();
-    const cotacaoCad = parseFloat(data[0].valor);
+    const url = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.3691/dados/ultimos/1?formato=json&_=' + new Date().getTime();
+    const res = await fetch(url);
+    const data = await res.json();
+    const valor = parseFloat(data[0].valor).toFixed(2);
     
-    // Atualiza SALÁRIO/H PEI
-    animateValue("salario", 0, cotacaoCad, 1000, '$', '');
+    // Atualiza o R$ do canto
+    document.getElementById('cotacao-cad').innerText = `R$ ${valor.replace('.', ',')}`;
     
-    // Atualiza SALDO R$ do canto: 23.77 * cotação CAD
-    const saldoEmBRL = (23.77 * cotacaoCad).toFixed(2);
-    document.getElementById('saldo-reais').innerText = `R$ ${saldoEmBRL.replace('.', ',')}`;
+    // Atualiza o SALÁRIO/H PEI também
+    document.getElementById('salario').innerText = `$${valor.replace('.', ',')}`;
     
-  } catch(e) { 
-    console.log("Erro API BCB");
+  } catch(e) {
+    console.log("Erro ao buscar CAD");
   }
 }
 
-// Inicia tudo
+// Inicia quando carrega
 window.onload = () => {
-  animateValue("score", 0, 87, 1200);
-  animateValue("moveis", 0, 14832, 2000);
-  animateValue("vagas", 0, 3, 800);
-  buscarCotacao(); // primeira carga
+  animate("moveis", 0, 14832, 2000);
+  animate("vagas", 0, 3, 1000);
+  atualizarCAD();
 }
 
-// ATUALIZA A CADA 4 SEGUNDOS - TEMPO REAL
-setInterval(buscarCotacao, 4000);
+// ATUALIZA A CADA 4 SEGUNDOS
+setInterval(atualizarCAD, 4000);
 </script>
 
 </body>
