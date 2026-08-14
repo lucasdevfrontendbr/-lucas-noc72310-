@@ -4,90 +4,98 @@
 <meta charset="UTF-8">
 <title>SISTEMA NOC 72310</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap');
-body { background: #000; color: #00ffff; font-family: 'Orbitron', sans-serif; padding: 20px; }
-.header { display: flex; justify-content: space-between; border: 2px solid #00ffff; padding: 20px; box-shadow: 0 0 20px #00ffff; margin-bottom: 20px; }
-.titulo { font-size: 24px; font-weight: 900; text-shadow: 0 0 10px #00ffff; }
-.saldo { font-size: 28px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 900; animation: blink 1s infinite; }
-@keyframes blink { 50% { opacity: 0.7; } }
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
+body { background: #02020a; color: #00ffff; font-family: 'Orbitron', sans-serif; padding: 20px; }
+.header { display: flex; justify-content: space-between; border: 2px solid #00ffff; padding: 20px; box-shadow: 0 0 20px #00ffff; margin-bottom: 20px; background: rgba(0,255,255,0.03); }
+.titulo { font-size: 20px; font-weight: 900; text-shadow: 0 0 10px #00ffff; color: #00ffff; }
+.sub { font-size: 11px; color: #ff00ff; }
+.saldo { font-size: 26px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 900; animation: pulse 2s infinite; }
+@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.card { border: 2px solid #00ffff; padding: 20px; text-align: center; box-shadow: 0 0 15px #00ffff; background: rgba(0,255,255,0.03); }
-.card h3 { font-size: 12px; color: #aaa; margin-bottom: 10px; }
-.card p { font-size: 32px; color: #ff00ff; font-weight: 900; }
-.box { border: 2px solid #ff00ff; padding: 15px; margin-top: 15px; box-shadow: 0 0 15px #ff00ff; }
+.card { border: 2px solid #00ffff; padding: 25px 15px; text-align: center; box-shadow: 0 0 15px #00ffff; background: rgba(0,255,255,0.03); border-radius: 6px; }
+.card h3 { font-size: 12px; color: #aaa; margin-bottom: 12px; letter-spacing: 1px; }
+.card p { font-size: 34px; color: #ff00ff; font-weight: 900; text-shadow: 0 0 10px #ff00ff; }
+.card small { font-size: 11px; color: #00ff00; }
+.box { border: 2px solid #ff00ff; padding: 0; margin-top: 15px; box-shadow: 0 0 15px #ff00ff; }
+.btn { width:100%; padding:15px; background:transparent; border:none; color:#ff00ff; font-family:Orbitron; font-weight:700; font-size:14px; cursor:pointer; }
+.btn:hover { background:#ff00ff; color:#000; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <div class="titulo">LUCAS.DA.SILVA.LIMA<br><span style="font-size:12px; color:#ff00ff">SISTEMA NOC 72310 | PEI CANADÁ</span></div>
-  <div class="saldo" id="cotacao-cad">R$ 130,78</div>
+  <div>
+    <div class="titulo">LUCAS.DA.SILVA.LIMA</div>
+    <div class="sub">SISTEMA NOC 72310 | PEI CANADÁ</div>
+  </div>
+  <div class="saldo" id="saldo-brl">R$ 4,23</div>
 </div>
 
 <div class="grid">
   <div class="card">
     <h3>MÓVEIS MONTADOS</h3>
     <p id="moveis">0</p>
-    <div style="color:#00ff00; font-size:11px">10 ANOS VALIDADOS ✓</div>
+    <small>10 ANOS VALIDADOS ✓</small>
   </div>
   <div class="card">
     <h3>VAGAS ABERTAS PEI</h3>
     <p id="vagas">0</p>
-    <div style="color:#00ff00; font-size:11px">SCAN COMPLETO ✓</div>
+    <small>SCAN COMPLETO ✓</small>
   </div>
   <div class="card">
     <h3>SALÁRIO/H PEI</h3>
-    <p id="salario">$0,00</p>
-    <div style="color:#00ff00; font-size:11px">+10% VS MÉDIA NOC</div>
+    <p id="salario-usd">$0,00</p>
+    <small>+10% VS MÉDIA NOC</small>
   </div>
 </div>
 
 <div class="box">
-  <button style="width:100%; padding:15px; background:transparent; border:2px solid #ff00ff; color:#ff00ff; font-family:Orbitron; font-weight:700; cursor:pointer;">BAIXAR LMIA.PDF</button>
+  <button class="btn">BAIXAR LMIA.PDF</button>
 </div>
 
 <script>
-// Animação dos números
-function animate(id, start, end, time) {
-  let obj = document.getElementById(id);
-  let range = end - start;
-  let step = Math.abs(Math.floor(time / range));
-  let current = start;
-  let timer = setInterval(() => {
-    current += 1;
-    obj.innerHTML = current.toLocaleString('pt-BR');
-    if (current >= end) clearInterval(timer);
-  }, step);
+// Animação contando
+function animateValue(id, start, end, duration) {
+  const obj = document.getElementById(id);
+  let startTime = null;
+  const step = (time) => {
+    if (!startTime) startTime = time;
+    const progress = Math.min((time - startTime) / duration, 1);
+    const value = Math.floor(progress * (end - start) + start);
+    obj.innerHTML = value.toLocaleString('pt-BR');
+    if (progress < 1) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
 }
 
-// API BANCO CENTRAL - Dólar Canadense
-async function atualizarCAD() {
+// API BANCO CENTRAL - DÓLAR CANADENSE USD
+async function atualizarUSD() {
   try {
-    const url = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.3691/dados/ultimos/1?formato=json&_=' + new Date().getTime();
+    // Código 1 = Dólar Comercial USD
+    const url = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json&_=' + Date.now();
     const res = await fetch(url);
     const data = await res.json();
-    const valor = parseFloat(data[0].valor).toFixed(2);
+    const cotacaoUSD = parseFloat(data[0].valor);
+    const valorFormatado = cotacaoUSD.toFixed(2);
     
-    // Atualiza o R$ do canto
-    document.getElementById('cotacao-cad').innerText = `R$ ${valor.replace('.', ',')}`;
-    
-    // Atualiza o SALÁRIO/H PEI também
-    document.getElementById('salario').innerText = `$${valor.replace('.', ',')}`;
+    // Atualiza os 2 lugares: R$ do canto e $ do card
+    document.getElementById('saldo-brl').innerText = `R$ ${valorFormatado.replace('.', ',')}`;
+    document.getElementById('salario-usd').innerText = `$${valorFormatado.replace('.', ',')}`;
     
   } catch(e) {
-    console.log("Erro ao buscar CAD");
+    console.log("Erro API USD");
   }
 }
 
 // Inicia quando carrega
 window.onload = () => {
-  animate("moveis", 0, 14832, 2000);
-  animate("vagas", 0, 3, 1000);
-  atualizarCAD();
+  animateValue("moveis", 0, 12668, 2000);
+  animateValue("vagas", 0, 3, 800);
+  atualizarUSD();
 }
 
-// ATUALIZA A CADA 4 SEGUNDOS
-setInterval(atualizarCAD, 4000);
+// ATUALIZA A CADA 4 SEGUNDOS - TEMPO REAL
+setInterval(atualizarUSD, 4000);
 </script>
 
 </body>
