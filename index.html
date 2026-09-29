@@ -1,77 +1,104 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-br">
 <head>
 <meta charset="UTF-8">
-<title>Monitor LMIA + Chance Visto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lucas Lima - NOC 72311 | Portfolio</title>
 <style>
-body{font-family:Arial;background:#0f172a;color:white;text-align:center}
-.card{background:#1e293b;padding:20px;margin:20px auto;border-radius:15px;max-width:650px}
-h1{color:#22c55e} .vaga{background:#334155;padding:10px;margin:10px;border-radius:8px;text-align:left}
+body{font-family:Arial;background:#0f172a;color:white;margin:0;padding:15px;text-align:center}
+.card{background:#1e293b;padding:20px;margin:15px auto;border-radius:15px;max-width:700px;box-shadow:0 4px 15px rgba(0,0,0,0.5)}
+h1{color:#22c55e;margin:5px 0}
+.vaga{background:#334155;padding:12px;margin:10px 0;border-radius:8px;text-align:left;border-left:4px solid #22c55e;font-size:14px}
 .tag{background:#22c55e;color:black;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold}
-button{padding:12px 20px;border-radius:8px;border:none;font-weight:bold;cursor:pointer;margin:10px;background:#3b82f6;color:white}
-#percent{font-size:42px;font-weight:bold}
+#percent{font-size:48px;font-weight:bold}
+.contato-card{background:#2563eb;border:3px solid #facc15;border-radius:20px;padding:25px;max-width:400px;margin:25px auto;text-align:center}
+.contato-card h2{margin:0;color:white;line-height:1.3;font-size:24px}
+.contato-card p{color:#fde68a;margin:10px 0 18px 0}
+.icons{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+.icon-btn{width:54px;height:54px;border-radius:12px;display:flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-weight:bold;font-size:20px;transition:0.2s}
+.icon-btn:hover{transform:scale(1.1)}
+.linkedin{background:#0e76a8} .github{background:#1f2937} .email{background:#f472b6} .whatsapp{background:#25D366}
+#curriculoDiv{display:none;background:#f8fafc;color:#0f172a;border-radius:15px;padding:22px;margin:20px auto;max-width:750px;text-align:left;line-height:1.6}
+#curriculoDiv h3{color:#0f172a;margin:15px 0 5px 0;border-bottom:2px solid #22c55e;padding-bottom:3px}
+.btn-curriculo{background:#facc15;color:#0f172a;padding:12px 22px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;font-size:15px;margin-top:12px}
+.btn-fechar{background:#0f172a;color:white}
+.small{font-size:13px;color:#64748b}
 </style>
 </head>
 <body>
+
 <div class="card">
 <h1>🇨🇦 Monitor de Vagas LMIA</h1>
-<p>Atualizando a cada 4s | Job Bank + Indeed</p>
-<div id="percent">--%</div>
-<p id="detalhe">Chance de aprovação do seu visto fechado</p>
+<p>NOC 72311 - Cabinet Installer | Construction Trades - AIP 2026</p>
+<div id="percent">95%</div>
+<p>LUCAS DA SILVA LIMA - 10 anos de experiência</p>
 <hr>
-<h3 id="total">0 vagas com LMIA encontradas hoje</h3>
-<div id="lista"></div>
-<button onclick="calcular()">RECALCULAR MINHA CHANCE</button>
+<div class="vaga"><span class="tag">LMIA</span> <b>Cabinet Installer - Wildwood Cabinets</b><br>Moncton, NB - $24/h - AIP Designated</div>
+<div class="vaga"><span class="tag">LMIA</span> <b>Kitchen Installer - Kent Homes / J.D. Irving</b><br>Saint John, NB - $26/h - AIP</div>
+<div class="vaga"><span class="tag">LMIA</span> <b>Furniture Assembler - Supreme Cabinets</b><br>Fredericton, NB - $22/h - LMIA Available</div>
+</div>
+
+<div class="contato-card">
+<h2>Gostou do projeto?<br>Fala comigo!</h2>
+<p>Lucas Lima - Dev Junior<br>Montador de Móveis - Tok&Stok</p>
+<div class="icons">
+<a class="icon-btn linkedin" href="https://www.linkedin.com/in/lucas-lima-6b97422b9/" target="_blank">in</a>
+<a class="icon-btn github" href="https://github.com/lucasdevfrontendbr" target="_blank">GH</a>
+<a class="icon-btn email" href="mailto:lucasduti10@gmail.com">✉️</a>
+<a class="icon-btn whatsapp" href="https://wa.me/5521988862013" target="_blank">WA</a>
+</div>
+<button class="btn-curriculo" id="btnToggle" onclick="toggleCurriculo()">📄 Ver meu Currículo</button>
+<p class="small" style="color:#fde68a;margin-top:10px">Projeto: portugal-finance.vercel.app</p>
+</div>
+
+<div id="curriculoDiv">
+<h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA</h2>
+<p style="text-align:center" class="small">Brasileiro, casado, 43 anos - CNH D - Atividade Remunerada<br>
+Rua Julia Alves dos Santos, 70 - Jardim Bonifácio - São João de Meriti/RJ<br>
+(21) 98886-2013 / (21) 96435-2655 | lucasduti10@gmail.com<br>
+LinkedIn: lucas-lima-6b97422b9 | Github: lucasdevfrontendbr</p>
+
+<h3>OBJETIVO</h3>
+<p>Atuar na área de Logística, Operação de Empilhadeira / Cabinet Installer - Canadá NOC 72311</p>
+
+<h3>EXPERIÊNCIA PROFISSIONAL</h3>
+<p><b>2021 - 2026 | ESTOK DISTRIBUIDORA E SERVIÇOS - TOK&STOK</b><br>
+Cargo: Auxiliar de Montagem<br>
+Entrega e montagem de móveis, controle e abertura de trocas de produtos avariados, monitoramento de serviços temporizados via sistema TOA (Oracle), 2026 sistema ADP.</p>
+
+<p><b>2013 - 2018 | ESTOK COMÉRCIO E REPRESENTAÇÕES - TOK&STOK</b><br>
+Cargo: Montador de Móveis<br>
+Entrega, montagem e controle via TOA. 2 anos na administração: abertura do escritório, geração de programação, impressão e monitoramento de equipes, recebimento de ocorrências, digitalização de documentos nos sistemas Gcan e Oracle TOA, reagendamento, fechamento da programação, e-mails, folhas de ponto e avisos de férias.</p>
+
+<p><b>2009 - 2011 | DROGARIAS PACHECO</b><br>Cargo: Operador de Depósito Pleno - Separação, reposição, abastecimento, conferência, armazenagem. Setor de avariados, treinei empilhadeira elétrica.</p>
+
+<p><b>2008 - 2008 | ATHOS FARMA</b><br>Cargo: Auxiliar de Estoque</p>
+
+<h3>QUALIFICAÇÕES</h3>
+<p>• Operador de Empilhadeira - SENAI/RJ, 30h<br>
+• Operações de Almoxarifado e Logística - SENAC, 108h<br>
+• Brigada de Incêndio - Primeiros socorros e combate (Corpo de Bombeiros)<br>
+• Informática: Windows, Word, Excel, HTML5, CSS, JavaScript + IA<br>
+• English basic - CNH D</p>
+
+<button class="btn-curriculo btn-fechar" onclick="toggleCurriculo()">❌ Fechar e Voltar</button>
 </div>
 
 <script>
-// SEU PERFIL - edita aqui
-let perfil = {
-  idioma: 7, // CLB 7
-  experiencia: 3, // anos
-  idade: 28,
-  tem_oferta_lmia: true
-}
-
-let vagasMock = [
-  {titulo: "Administrative Assistant - LMIA Approved", cidade: "Toronto, ON", salario: "$22/h"},
-  {titulo: "Cook - LMIA Available", cidade: "Calgary, AB", salario: "$18/h"},
-  {titulo: "Truck Driver - LMIA Approved", cidade: "Winnipeg, MB", salario: "$28/h"}
-];
-
-function calculaChance(p){
-  let base = 40;
-  if(p.tem_oferta_lmia) base += 30;
-  base += p.idioma * 3;
-  base += p.experiencia * 2;
-  if(p.idade >= 22 && p.idade <= 35) base += 10;
-  if(base > 95) base = 95;
-  return base;
-}
-
-function atualizar(){
-  let chance = calculaChance(perfil);
-  document.getElementById('percent').innerText = chance + '%';
-  document.getElementById('total').innerText = vagasMock.length + ' vagas com LMIA encontradas hoje';
-  
-  let lista = document.getElementById('lista');
-  lista.innerHTML = '';
-  vagasMock.forEach(v => {
-    lista.innerHTML += `<div class="vaga"><span class="tag">LMIA</span> <b>${v.titulo}</b><br>${v.cidade} - ${v.salario}</div>`;
-  });
-
-  // simula vaga nova aparecendo
-  if(Math.random() > 0.7){
-    vagasMock.unshift({titulo: "Nova vaga LMIA encontrada agora! - Warehouse Worker", cidade: "Saskatoon, SK", salario: "$21/h"});
+let aberto = false;
+function toggleCurriculo(){
+  const div = document.getElementById('curriculoDiv');
+  const btn = document.getElementById('btnToggle');
+  aberto = !aberto;
+  if(aberto){
+    div.style.display = 'block';
+    btn.innerHTML = '❌ Fechar Currículo';
+    div.scrollIntoView({behavior:'smooth'});
+  } else {
+    div.style.display = 'none';
+    btn.innerHTML = '📄 Ver meu Currículo';
+    window.scrollTo({top:0, behavior:'smooth'});
   }
-}
-setInterval(atualizar, 4000);
-atualizar();
-
-function calcular(){
-  let novaIdade = prompt("Sua idade?", perfil.idade);
-  if(novaIdade) perfil.idade = parseInt(novaIdade);
-  atualizar();
 }
 </script>
 </body>
