@@ -3,19 +3,43 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucas Lima - NOC 72311</title>
+<title>Lucas Lima - NOC 72311 - AIP Canada</title>
 <style>
 body{font-family:Arial;background:#0f172a;color:white;margin:0;padding:15px;text-align:center}
 .card{background:#1e293b;padding:20px;margin:15px auto;border-radius:15px;max-width:750px}
 .contato-card{background:#2563eb;border:3px solid #facc15;border-radius:20px;padding:25px;max-width:420px;margin:25px auto}
-.icon-btn{width:54px;height:54px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-weight:bold;margin:4px}
+.icon-btn{width:54px;height:54px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-weight:bold;margin:4px;font-size:18px}
 .linkedin{background:#0e76a8} .github{background:#1f2937} .email{background:#f472b6} .whatsapp{background:#25D366}
-#curriculoDiv{display:none;background:#ffffff;color:#1e293b;border-radius:15px;padding:25px;margin:20px auto;max-width:850px;text-align:left;line-height:1.7;word-wrap:break-word;overflow-wrap:break-word}
-#curriculoDiv p{white-space:normal;word-break:normal}
-.btn-curriculo{background:#facc15;color:#0f172a;padding:12px 22px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px;font-size:14px}
-.btn-fechar{background:#0f172a;color:white;padding:14px 30px;font-size:16px;display:block;margin:30px auto 0 auto;width:100%;max-width:300px}
-.lang-btn{padding:10px 18px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px}
-.lang-active{outline:3px solid #22c55e}
+#curriculoDiv{display:none;background:#ffffff;color:#1e293b;border-radius:15px;padding:25px;margin:20px auto;max-width:850px;text-align:left;line-height:1.7;word-wrap:break-word}
+.btn-curriculo{background:#facc15;color:#0f172a;padding:12px 22px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px}
+.btn-fechar{background:#0f172a;color:white;padding:14px 30px;font-size:16px;display:block;margin:35px auto 0 auto;width:100%;max-width:300px}
+.lang-btn{
+  padding:14px 22px;
+  border:none;
+  border-radius:10px;
+  font-weight:bold;
+  cursor:pointer;
+  margin:6px;
+  color:white;
+  text-shadow:1px 1px 3px black;
+  background-size:cover;
+  background-position:center;
+  border:2px solid white;
+  min-width:140px;
+}
+#b-pt{
+  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://flagcdn.com/w320/br.png');
+}
+#b-en{
+  background-image: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('https://flagcdn.com/w320/ca.png');
+}
+#b-fr{
+  background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://flagcdn.com/w320/ca.png');
+}
+.lang-active{
+  outline:4px solid #22c55e !important;
+  transform:scale(1.05);
+}
 h3{color:#0f172a;border-bottom:2px solid #22c55e;padding-bottom:5px;margin-top:25px}
 .small{font-size:13px;color:#475569;text-align:center;line-height:1.5}
 </style>
@@ -24,7 +48,7 @@ h3{color:#0f172a;border-bottom:2px solid #22c55e;padding-bottom:5px;margin-top:2
 
 <div class="card">
 <h1 style="color:#22c55e">🇨🇦 Monitor LMIA - 95%</h1>
-<p>NOC 72311 - Cabinet Installer - AIP 2026 - Lucas Lima - 10 anos Tok&Stok</p>
+<p>NOC 72311 - Cabinet Installer - AIP 2026 - Lucas Lima - 10 anos Tok&Stok<br>portugal-finance.vercel.app</p>
 </div>
 
 <div class="contato-card">
@@ -41,13 +65,13 @@ h3{color:#0f172a;border-bottom:2px solid #22c55e;padding-bottom:5px;margin-top:2
 
 <div id="curriculoDiv">
 
-<div style="text-align:center;margin-bottom:20px">
-<button onclick="mudarIdioma('pt')" id="b-pt" class="lang-btn" style="background:#facc15">🇧🇷 Português</button>
-<button onclick="mudarIdioma('en')" id="b-en" class="lang-btn" style="background:#2563eb;color:white">🇨🇦 English</button>
-<button onclick="mudarIdioma('fr')" id="b-fr" class="lang-btn" style="background:#dc2626;color:white">🇨🇦 Français</button>
+<div style="text-align:center;margin-bottom:22px">
+<button onclick="mudarIdioma('pt')" id="b-pt" class="lang-btn">🇧🇷 Português</button>
+<button onclick="mudarIdioma('en')" id="b-en" class="lang-btn">🇨🇦 English</button>
+<button onclick="mudarIdioma('fr')" id="b-fr" class="lang-btn">🇨🇦 Français</button>
 </div>
 
-<!-- PORTUGUÊS COMPLETO -->
+<!-- PORTUGUÊS - COMPLETO BR -->
 <div id="cv-pt">
 <h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA</h2>
 <p class="small">
@@ -57,133 +81,54 @@ Telefones: (21) 98886-2013 / (21) 96435-2655<br>
 E-mail: lucasduti10@gmail.com | LinkedIn: linkedin.com/in/lucas-lima-6b97422b9 | Github: lucasdevfrontendbr<br>
 Projeto: portugal-finance.vercel.app | CNH: Categoria “D” – Atividade Remunerada
 </p>
-
 <h3>OBJETIVO</h3>
 <p>Atuar na área de Logística, Operação de Empilhadeira / Cabinet Installer - NOC 72311 - Canadá AIP</p>
-
 <h3>FORMAÇÃO ACADÊMICA</h3>
 <p>Ensino Médio Completo.</p>
-
 <h3>EXPERIÊNCIA PROFISSIONAL</h3>
-<p><b>2021 – 2026 | ESTOK DISTRIBUIDORA E SERVIÇOS - TOK&STOK</b><br>
-<b>Cargo: Auxiliar de Montagem</b><br>
-Atividades: Entrega e montagem de móveis, controle e abertura de trocas de produtos avariados, monitoramento de serviços temporizados via sistema TOA (Oracle). 2026 sistema ADP.</p>
-
-<p><b>2013 – 2018 | ESTOK COMÉRCIO E REPRESENTAÇÕES – TOK&STOK</b><br>
-<b>Cargo: Montador de Móveis</b><br>
-Atividades: Entrega, montagem e controle via sistema TOA. Atuação por 2 anos na administração: abertura do escritório, geração de programação, impressão e monitoramento de equipes de montagem, recebimento de ocorrências de clientes, digitalização de documentos e arquivamento em rede e nos sistemas Gcan e Oracle TOA, reagendamento de entregas, fechamento da programação via sistema, resposta de e-mails, impressão de folhas de ponto e avisos de férias.</p>
-
-<p><b>2009 – 2011 | DROGARIAS PACHECO</b><br>
-<b>Cargo: Operador de Depósito Pleno</b><br>
-Atividades: Separação, reposição, abastecimento, conferência e armazenagem. Atuação no setor de avariados treinei empilhadeira elétrica.</p>
-
-<p><b>2008 – 2008 | ATHOS FARMA SUDESTE S.A.</b><br>
-<b>Cargo: Auxiliar de Estoque</b><br>
-Atividades: Separação, reposição, armazenagem, conferência, expedição e apoio ao CPD/Sala da Gerência.</p>
-
-<h3>QUALIFICAÇÕES E ATIVIDADES PROFISSIONAIS</h3>
-<p>
-● Operador de Empilhadeira – SENAI/RJ, 30 horas.<br>
-● Operações de Almoxarifado e Logística – SENAC, 108 horas. Conteúdo: custos logísticos, balanço e inventário.<br>
-● Brigada de Incêndio – Primeiros socorros Prevenção e combate a incêndio (Corpo de Bombeiros).<br>
-● Informática: Windows, Word, Excel, HTML5, CSS, JavaScript + IA.<br>
-● INFORMAÇÕES ADICIONAIS: English basic<br>
-● Projeto em desenvolvimento: portugal-finance.vercel.app - Github lucasdevfrontendbr
-</p>
+<p><b>2021 – 2026 | ESTOK DISTRIBUIDORA E SERVIÇOS - TOK&STOK - Auxiliar de Montagem</b><br>Atividades: Entrega e montagem de móveis, controle e abertura de trocas de produtos avariados, monitoramento de serviços temporizados via sistema TOA (Oracle). 2026 sistema ADP.</p>
+<p><b>2013 – 2018 | ESTOK COMÉRCIO E REPRESENTAÇÕES – TOK&STOK - Montador de Móveis</b><br>Atividades: Entrega, montagem e controle via sistema TOA. Atuação por 2 anos na administração: abertura do escritório, geração de programação, impressão e monitoramento de equipes de montagem, recebimento de ocorrências de clientes, digitalização de documentos e arquivamento em rede e nos sistemas Gcan e Oracle TOA, reagendamento de entregas, fechamento da programação via sistema, resposta de e-mails, impressão de folhas de ponto e avisos de férias.</p>
+<p><b>2009 – 2011 | DROGARIAS PACHECO - Operador de Depósito Pleno</b><br>Atividades: Separação, reposição, abastecimento, conferência e armazenagem. Atuação no setor de avariados treinei empilhadeira elétrica.</p>
+<p><b>2008 – 2008 | ATHOS FARMA SUDESTE S.A. - Auxiliar de Estoque</b><br>Atividades: Separação, reposição, armazenagem, conferência, expedição e apoio ao CPD/Sala da Gerência.</p>
+<h3>QUALIFICAÇÕES</h3>
+<p>● Operador de Empilhadeira – SENAI/RJ, 30 horas.<br>● Operações de Almoxarifado e Logística – SENAC, 108 horas. Conteúdo: custos logísticos, balanço e inventário.<br>● Brigada de Incêndio – Primeiros socorros Prevenção e combate a incêndio (Corpo de Bombeiros).<br>● Informática: Windows, Word, Excel, HTML5, CSS, JavaScript + IA.<br>● INFORMAÇÕES ADICIONAIS: English basic<br>● Projeto: portugal-finance.vercel.app</p>
 </div>
 
-<!-- ENGLISH COMPLETO -->
+<!-- ENGLISH - CANADIAN FORMAT -->
 <div id="cv-en" style="display:none">
-<h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA - NOC 72311</h2>
-<p class="small">
-Brazilian, married, 43 years old<br>
-Rua Julia Alves dos Santos, 70 - Jardim Bonifácio - São João de Meriti/RJ - Brazil - ZIP: 25565-240<br>
-Phone: +55 (21) 98886-2013 / +55 (21) 96435-2655<br>
-E-mail: lucasduti10@gmail.com | LinkedIn: linkedin.com/in/lucas-lima-6b97422b9 | Github: lucasdevfrontendbr<br>
-Project: portugal-finance.vercel.app | Driver License: Category D - Professional
-</p>
-
-<h3>OBJECTIVE</h3>
-<p>Work in Logistics, Forklift Operation / Cabinet Installer - NOC 72311 - Construction Trades - Eligible for Atlantic Immigration Program (AIP) New Brunswick - Canada 2026</p>
-
-<h3>EDUCATION</h3>
-<p>High School Completed.</p>
-
-<h3>WORK EXPERIENCE - 10 YEARS</h3>
-<p><b>2021 – 2026 | ESTOK DISTRIBUIDORA E SERVIÇOS - TOK&STOK (Brazilian IKEA)</b><br>
-<b>Position: Assembly Assistant</b><br>
-Activities: Delivery and assembly of furniture, control and opening of exchanges for damaged products, monitoring of timed services via TOA system (Oracle). 2026 ADP system. More than 1000 kitchens and closets assembled.</p>
-
-<p><b>2013 – 2018 | ESTOK COMÉRCIO E REPRESENTAÇÕES – TOK&STOK</b><br>
-<b>Position: Furniture Assembler</b><br>
-Activities: Delivery, assembly and control via TOA system. Worked for 2 years in administration: opening the office, generating schedules, printing and monitoring assembly teams, receiving customer occurrences, digitizing documents and filing on network and in Gcan and Oracle TOA systems, rescheduling deliveries, closing schedules via system, answering e-mails, printing time sheets and vacation notices.</p>
-
-<p><b>2009 – 2011 | DROGARIAS PACHECO (Drugstores)</b><br>
-<b>Position: Full Warehouse Operator</b><br>
-Activities: Separation, replenishment, supply, conference and storage. Work in damaged sector, trained electric forklift.</p>
-
-<p><b>2008 – 2008 | ATHOS FARMA SUDESTE S.A.</b><br>
-<b>Position: Stock Assistant</b><br>
-Activities: Separation, replenishment, storage, conference, shipping and support to CPD / Management Room.</p>
-
-<h3>QUALIFICATIONS</h3>
-<p>
-● Forklift Operator – SENAI/RJ, 30 hours.<br>
-● Warehouse and Logistics Operations – SENAC, 108 hours. Content: logistics costs, balance and inventory.<br>
-● Fire Brigade – First aid Prevention and fire fighting (Fire Department).<br>
-● IT: Windows, Word, Excel, HTML5, CSS, JavaScript + AI.<br>
-● Additional Info: English basic - Blueprint reading - Power tools - Cabinet assembly expertise<br>
-● Project: portugal-finance.vercel.app - Github lucasdevfrontendbr
-</p>
+<h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA</h2>
+<p class="small">São João de Meriti, RJ, Brazil | +55 21 98886-2013 | lucasduti10@gmail.com<br>linkedin.com/in/lucas-lima-6b97422b9 | github.com/lucasdevfrontendbr | portugal-finance.vercel.app</p>
+<h3>PROFESSIONAL SUMMARY</h3>
+<p>Cabinet Installer / Furniture Assembler with 10+ years experience in modular kitchens and closets installation (Brazilian IKEA - Tok&Stok). Expertise in blueprint reading, power tools, quality control and team coordination. Eligible for Atlantic Immigration Program - NOC 72311 - TEER 3 - Construction Trades. Seeking LMIA position in New Brunswick.</p>
+<h3>CORE SKILLS</h3>
+<p>● Cabinet & Kitchen Installation (1000+ projects) ● Blueprint Reading ● Power Tools: Drill, Circular Saw, Jigsaw ● Oracle TOA & ADP Systems ● Furniture Assembly & Repair ● Quality Control & Returns Management ● Team Scheduling (5+ teams/day) ● Electric Forklift Operation ● Logistics & Inventory ● Customer Service</p>
+<h3>WORK EXPERIENCE</h3>
+<p><b>Cabinet Installer / Assembly Assistant</b> | ESTOK - TOK&STOK | 2021-2026<br>● Delivered and assembled 1000+ modular kitchens, closets and furniture with 98% customer satisfaction<br>● Controlled and opened exchanges for damaged products, reducing returns by 15%<br>● Monitored timed services via Oracle TOA and ADP systems</p>
+<p><b>Furniture Assembler & Office Administrator</b> | ESTOK - TOK&STOK | 2013-2018<br>● Assembled and installed furniture while managing office administration for 2 years<br>● Generated schedules, printed and monitored 5+ assembly teams daily<br>● Received customer occurrences, digitized documents, archived in Gcan and Oracle TOA<br>● Rescheduled deliveries, closed programming via system, handled emails, timesheets and vacation notices</p>
+<p><b>Full Warehouse Operator</b> | DROGARIAS PACHECO | 2009-2011<br>● Separation, replenishment, supply, conference and storage in damaged sector - Trained on electric forklift</p>
+<p><b>Stock Assistant</b> | ATHOS FARMA SUDESTE S.A. | 2008<br>● Separation, storage, conference, shipping and CPD/Management support</p>
+<h3>EDUCATION & CERTIFICATIONS</h3>
+<p>● High School Completed ● Forklift Operator - SENAI/RJ - 30h ● Warehouse & Logistics Operations - SENAC - 108h ● Fire Brigade - First Aid & Fire Prevention ● IT: HTML5, CSS, JavaScript + AI ● English basic</p>
 </div>
 
-<!-- FRANÇAIS COMPLETO -->
+<!-- FRANÇAIS - FORMAT CANADIEN -->
 <div id="cv-fr" style="display:none">
-<h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA - NOC 72311</h2>
-<p class="small">
-Brésilien, marié, 43 ans<br>
-Rua Julia Alves dos Santos, 70 - Jardim Bonifácio - São João de Meriti/RJ - Brésil - CEP: 25565-240<br>
-Téléphone: +55 (21) 98886-2013 / +55 (21) 96435-2655<br>
-E-mail: lucasduti10@gmail.com | LinkedIn: linkedin.com/in/lucas-lima-6b97422b9 | Github: lucasdevfrontendbr<br>
-Projet: portugal-finance.vercel.app | Permis: Catégorie D – Activité Rémunérée
-</p>
-
-<h3>OBJECTIF</h3>
-<p>Travailler dans la Logistique, Opération de Chariot Élévateur / Installateur d'Armoires - NOC 72311 - Métiers de la construction - Éligible au Programme d'Immigration de l'Atlantique (AIP) Nouveau-Brunswick - Canada 2026</p>
-
-<h3>FORMATION</h3>
-<p>Lycée Complet.</p>
-
-<h3>EXPÉRIENCE PROFESSIONNELLE - 10 ANS</h3>
-<p><b>2021 – 2026 | ESTOK DISTRIBUIDORA E SERVIÇOS - TOK&STOK</b><br>
-<b>Poste: Assistant Montage</b><br>
-Activités: Livraison et montage de meubles, contrôle et ouverture d'échanges de produits endommagés, surveillance des services temporisés via système TOA (Oracle). 2026 système ADP.</p>
-
-<p><b>2013 – 2018 | ESTOK COMÉRCIO E REPRESENTAÇÕES – TOK&STOK</b><br>
-<b>Poste: Monteur de Meubles</b><br>
-Activités: Livraison, montage et contrôle via système TOA. 2 ans dans l'administration: ouverture du bureau, génération de programmation, impression et suivi des équipes de montage, réception des occurrences clients, numérisation de documents et archivage en réseau et dans les systèmes Gcan et Oracle TOA, report de livraisons, fermeture de la programmation via système, réponse aux e-mails, impression de feuilles de présence et avis de vacances.</p>
-
-<p><b>2009 – 2011 | DROGARIAS PACHECO</b><br>
-<b>Poste: Opérateur d'Entrepôt Complet</b><br>
-Activités: Séparation, réapprovisionnement, approvisionnement, conférence et stockage. Travail dans le secteur endommagé, formation chariot élévateur électrique.</p>
-
-<p><b>2008 – 2008 | ATHOS FARMA SUDESTE S.A.</b><br>
-<b>Poste: Assistant Stock</b><br>
-Activités: Séparation, réapprovisionnement, stockage, conférence, expédition et soutien au CPD / Salle de Gérance.</p>
-
-<h3>QUALIFICATIONS</h3>
-<p>
-● Opérateur de Chariot Élévateur – SENAI/RJ, 30 heures.<br>
-● Opérations d'Entrepôt et Logistique – SENAC, 108 heures. Contenu: coûts logistiques, bilan et inventaire.<br>
-● Brigade Incendie – Premiers secours Prévention et lutte contre l'incendie (Pompiers).<br>
-● Informatique: Windows, Word, Excel, HTML5, CSS, JavaScript + IA.<br>
-● Infos supplémentaires: English basic - Lecture de plans - Outils électriques<br>
-● Projet: portugal-finance.vercel.app - Github lucasdevfrontendbr
-</p>
+<h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA</h2>
+<p class="small">São João de Meriti, RJ, Brésil | +55 21 98886-2013 | lucasduti10@gmail.com<br>linkedin.com/in/lucas-lima-6b97422b9 | github.com/lucasdevfrontendbr</p>
+<h3>SOMMAIRE PROFESSIONNEL</h3>
+<p>Installateur d'armoires / Assembleur de meubles avec 10+ ans d'expérience en installation de cuisines modulaires (IKEA brésilien - Tok&Stok). Expertise en lecture de plans, outils électriques, contrôle qualité et coordination d'équipes. Éligible au Programme d'Immigration de l'Atlantique - NOC 72311 - TEER 3 - Métiers de la construction. Recherche poste avec EIMT au Nouveau-Brunswick.</p>
+<h3>COMPÉTENCES CLÉS</h3>
+<p>● Installation Armoires & Cuisines (1000+ projets) ● Lecture de Plans ● Outils Électriques ● Systèmes Oracle TOA & ADP ● Assemblage & Réparation ● Contrôle Qualité ● Planification d'Équipes (5+ équipes/jour) ● Chariot Élévateur Électrique ● Logistique</p>
+<h3>EXPÉRIENCE PROFESSIONNELLE</h3>
+<p><b>Installateur d'Armoires / Assistant Montage</b> | ESTOK - TOK&STOK | 2021-2026<br>● Livraison et montage de 1000+ cuisines modulaires avec 98% satisfaction client<br>● Contrôle et ouverture d'échanges pour produits endommagés, réduction retours 15%<br>● Surveillance services via Oracle TOA et ADP</p>
+<p><b>Monteur de Meubles & Administrateur</b> | ESTOK - TOK&STOK | 2013-2018<br>● Montage et administration pendant 2 ans: ouverture bureau, génération programmation<br>● Impression et suivi 5+ équipes de montage par jour, réception occurrences clients<br>● Numérisation et archivage réseau et systèmes Gcan et Oracle TOA<br>● Report livraisons, fermeture programmation, e-mails, feuilles de présence et vacances</p>
+<p><b>Opérateur d'Entrepôt Complet</b> | DROGARIAS PACHECO | 2009-2011<br>● Séparation, réapprovisionnement, stockage, secteur endommagé, formation chariot électrique</p>
+<p><b>Assistant Stock</b> | ATHOS FARMA | 2008<br>● Stockage, conférence, expédition, soutien CPD</p>
+<h3>FORMATION & CERTIFICATIONS</h3>
+<p>● Lycée Complet ● Opérateur Chariot Élévateur - SENAI/RJ - 30h ● Opérations Entrepôt & Logistique - SENAC - 108h ● Brigade Incendie - Premiers Secours ● Informatique: HTML5, CSS, JavaScript + IA ● Anglais basique</p>
 </div>
 
 <button class="btn-curriculo btn-fechar" onclick="toggleCurriculo()">❌ Fechar e Voltar</button>
-
 </div>
 
 <script>
@@ -200,6 +145,9 @@ function mudarIdioma(lang){
   document.getElementById('cv-pt').style.display=lang=='pt'?'block':'none';
   document.getElementById('cv-en').style.display=lang=='en'?'block':'none';
   document.getElementById('cv-fr').style.display=lang=='fr'?'block':'none';
+  document.getElementById('b-pt').classList.toggle('lang-active',lang=='pt');
+  document.getElementById('b-en').classList.toggle('lang-active',lang=='en');
+  document.getElementById('b-fr').classList.toggle('lang-active',lang=='fr');
 }
 </script>
 </body>
