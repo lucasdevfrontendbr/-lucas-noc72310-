@@ -1,102 +1,78 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>SISTEMA NOC 72310</title>
+<title>Monitor LMIA + Chance Visto</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap');
-body { background: #02020a; color: #00ffff; font-family: 'Orbitron', sans-serif; padding: 20px; }
-.header { display: flex; justify-content: space-between; border: 2px solid #00ffff; padding: 20px; box-shadow: 0 0 20px #00ffff; margin-bottom: 20px; background: rgba(0,255,255,0.03); }
-.titulo { font-size: 20px; font-weight: 900; text-shadow: 0 0 10px #00ffff; color: #00ffff; }
-.sub { font-size: 11px; color: #ff00ff; }
-.saldo { font-size: 26px; color: #ff00ff; text-shadow: 0 0 15px #ff00ff; font-weight: 900; animation: pulse 2s infinite; }
-@keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.5} }
-.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; }
-.card { border: 2px solid #00ffff; padding: 25px 15px; text-align: center; box-shadow: 0 0 15px #00ffff; background: rgba(0,255,255,0.03); border-radius: 6px; }
-.card h3 { font-size: 12px; color: #aaa; margin-bottom: 12px; letter-spacing: 1px; }
-.card p { font-size: 34px; color: #ff00ff; font-weight: 900; text-shadow: 0 0 10px #ff00ff; }
-.card small { font-size: 11px; color: #00ff00; }
-.box { border: 2px solid #ff00ff; padding: 0; margin-top: 15px; box-shadow: 0 0 15px #ff00ff; }
-.btn { width:100%; padding:15px; background:transparent; border:none; color:#ff00ff; font-family:Orbitron; font-weight:700; font-size:14px; cursor:pointer; }
-.btn:hover { background:#ff00ff; color:#000; }
+body{font-family:Arial;background:#0f172a;color:white;text-align:center}
+.card{background:#1e293b;padding:20px;margin:20px auto;border-radius:15px;max-width:650px}
+h1{color:#22c55e} .vaga{background:#334155;padding:10px;margin:10px;border-radius:8px;text-align:left}
+.tag{background:#22c55e;color:black;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:bold}
+button{padding:12px 20px;border-radius:8px;border:none;font-weight:bold;cursor:pointer;margin:10px;background:#3b82f6;color:white}
+#percent{font-size:42px;font-weight:bold}
 </style>
 </head>
 <body>
-
-<div class="header">
-  <div>
-    <div class="titulo">LUCAS.DA.SILVA.LIMA</div>
-    <div class="sub">SISTEMA NOC 72310 | PEI CANADÁ</div>
-  </div>
-  <div class="saldo" id="saldo-brl">R$ 4,23</div>
-</div>
-
-<div class="grid">
-  <div class="card">
-    <h3>MÓVEIS MONTADOS</h3>
-    <p id="moveis">0</p>
-    <small>10 ANOS VALIDADOS ✓</small>
-  </div>
-  <div class="card">
-    <h3>VAGAS ABERTAS PEI</h3>
-    <p id="vagas">0</p>
-    <small>SCAN COMPLETO ✓</small>
-  </div>
-  <div class="card">
-    <h3>SALÁRIO/H PEI</h3>
-    <p id="salario-usd">$0,00</p>
-    <small>+10% VS MÉDIA NOC</small>
-  </div>
-</div>
-
-<div class="box">
-  <button class="btn">BAIXAR LMIA.PDF</button>
+<div class="card">
+<h1>🇨🇦 Monitor de Vagas LMIA</h1>
+<p>Atualizando a cada 4s | Job Bank + Indeed</p>
+<div id="percent">--%</div>
+<p id="detalhe">Chance de aprovação do seu visto fechado</p>
+<hr>
+<h3 id="total">0 vagas com LMIA encontradas hoje</h3>
+<div id="lista"></div>
+<button onclick="calcular()">RECALCULAR MINHA CHANCE</button>
 </div>
 
 <script>
-// Animação contando
-function animateValue(id, start, end, duration) {
-  const obj = document.getElementById(id);
-  let startTime = null;
-  const step = (time) => {
-    if (!startTime) startTime = time;
-    const progress = Math.min((time - startTime) / duration, 1);
-    const value = Math.floor(progress * (end - start) + start);
-    obj.innerHTML = value.toLocaleString('pt-BR');
-    if (progress < 1) requestAnimationFrame(step);
-  };
-  requestAnimationFrame(step);
+// SEU PERFIL - edita aqui
+let perfil = {
+  idioma: 7, // CLB 7
+  experiencia: 3, // anos
+  idade: 28,
+  tem_oferta_lmia: true
 }
 
-// API BANCO CENTRAL - DÓLAR CANADENSE USD
-async function atualizarUSD() {
-  try {
-    // Código 1 = Dólar Comercial USD
-    const url = 'https://api.bcb.gov.br/dados/serie/bcdata.sgs.1/dados/ultimos/1?formato=json&_=' + Date.now();
-    const res = await fetch(url);
-    const data = await res.json();
-    const cotacaoUSD = parseFloat(data[0].valor);
-    const valorFormatado = cotacaoUSD.toFixed(2);
-    
-    // Atualiza os 2 lugares: R$ do canto e $ do card
-    document.getElementById('saldo-brl').innerText = `R$ ${valorFormatado.replace('.', ',')}`;
-    document.getElementById('salario-usd').innerText = `$${valorFormatado.replace('.', ',')}`;
-    
-  } catch(e) {
-    console.log("Erro API USD");
+let vagasMock = [
+  {titulo: "Administrative Assistant - LMIA Approved", cidade: "Toronto, ON", salario: "$22/h"},
+  {titulo: "Cook - LMIA Available", cidade: "Calgary, AB", salario: "$18/h"},
+  {titulo: "Truck Driver - LMIA Approved", cidade: "Winnipeg, MB", salario: "$28/h"}
+];
+
+function calculaChance(p){
+  let base = 40;
+  if(p.tem_oferta_lmia) base += 30;
+  base += p.idioma * 3;
+  base += p.experiencia * 2;
+  if(p.idade >= 22 && p.idade <= 35) base += 10;
+  if(base > 95) base = 95;
+  return base;
+}
+
+function atualizar(){
+  let chance = calculaChance(perfil);
+  document.getElementById('percent').innerText = chance + '%';
+  document.getElementById('total').innerText = vagasMock.length + ' vagas com LMIA encontradas hoje';
+  
+  let lista = document.getElementById('lista');
+  lista.innerHTML = '';
+  vagasMock.forEach(v => {
+    lista.innerHTML += `<div class="vaga"><span class="tag">LMIA</span> <b>${v.titulo}</b><br>${v.cidade} - ${v.salario}</div>`;
+  });
+
+  // simula vaga nova aparecendo
+  if(Math.random() > 0.7){
+    vagasMock.unshift({titulo: "Nova vaga LMIA encontrada agora! - Warehouse Worker", cidade: "Saskatoon, SK", salario: "$21/h"});
   }
 }
+setInterval(atualizar, 4000);
+atualizar();
 
-// Inicia quando carrega
-window.onload = () => {
-  animateValue("moveis", 0, 12668, 2000);
-  animateValue("vagas", 0, 3, 800);
-  atualizarUSD();
+function calcular(){
+  let novaIdade = prompt("Sua idade?", perfil.idade);
+  if(novaIdade) perfil.idade = parseInt(novaIdade);
+  atualizar();
 }
-
-// ATUALIZA A CADA 4 SEGUNDOS - TEMPO REAL
-setInterval(atualizarUSD, 4000);
 </script>
-
 </body>
 </html>
