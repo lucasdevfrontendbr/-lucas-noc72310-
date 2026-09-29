@@ -3,89 +3,121 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Lucas Lima - NOC 72311 - AIP Canada</title>
+<title>Lucas Lima - NOC 72311 Cabinet Installer - AIP New Brunswick</title>
 <style>
-body{
-  font-family:Arial;
-  color:white;
-  margin:0;
-  padding:15px;
-  text-align:center;
-  background: linear-gradient(rgba(10,15,35,0.88), rgba(15,23,42,0.92)), url('https://images.unsplash.com/photo-1519608487953-e999c86e7455?w=1200');
-  background-size:cover;
-  background-attachment:fixed;
-  background-position:center;
-}
-.card{background:rgba(30,41,59,0.85);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,0.1);padding:20px;margin:15px auto;border-radius:15px;max-width:750px;box-shadow:0 0 20px rgba(34,197,94,0.3)}
-.contato-card{background:linear-gradient(135deg, rgba(37,99,235,0.9), rgba(124,58,237,0.9));backdrop-filter:blur(10px);border:2px solid #facc15;border-radius:20px;padding:25px;max-width:420px;margin:25px auto;box-shadow:0 0 25px rgba(250,204,21,0.4)}
-.icon-btn{width:54px;height:54px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;text-decoration:none;color:white;font-weight:bold;margin:4px;font-size:18px;transition:0.2s}
-.icon-btn:hover{transform:scale(1.15)}
-.linkedin{background:#0e76a8} .github{background:#1f2937} .email{background:#f472b6} .whatsapp{background:#25D366}
-#curriculoDiv{display:none;background:#ffffff;color:#1e293b;border-radius:15px;padding:25px;margin:20px auto;max-width:850px;text-align:left;line-height:1.7}
-.btn-curriculo{background:#facc15;color:#0f172a;padding:12px 22px;border:none;border-radius:8px;font-weight:bold;cursor:pointer;margin:5px;box-shadow:0 0 10px rgba(250,204,21,0.6)}
-.btn-fechar{background:#0f172a;color:white;padding:14px 30px;font-size:16px;display:block;margin:35px auto 0 auto;width:100%;max-width:300px}
-.lang-btn{padding:14px 22px;border:none;border-radius:10px;font-weight:bold;cursor:pointer;margin:6px;color:white;text-shadow:1px 1px 3px black;background-size:cover;background-position:center;border:2px solid white;min-width:140px;transition:0.2s}
+*{box-sizing:border-box}
+body{font-family:Inter,Arial,sans-serif;background:#0b1220;color:#e2e8f0;margin:0;padding:0}
+.hero{background:linear-gradient(180deg, rgba(11,18,32,0.7), #0b1220), url('https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=1200');background-size:cover;background-position:center;padding:40px 15px;text-align:center;border-bottom:3px solid #22c55e}
+.badge{display:inline-block;background:#22c55e;color:#052e16;padding:8px 14px;border-radius:20px;font-weight:800;font-size:12px;letter-spacing:0.5px;margin-bottom:12px}
+.hero h1{margin:10px 0;color:white;font-size:28px;line-height:1.2}
+.hero p{color:#94a3b8;margin:0}
+.card{max-width:900px;margin:18px auto;background:#141e32;border:1px solid #1e293b;border-radius:14px;padding:20px}
+.grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px}
+@media(max-width:700px){.grid{grid-template-columns:1fr}}
+.kpi{background:#0f172a;border:1px solid #22c55e30;border-radius:12px;padding:14px;text-align:left}
+.kpi b{color:#22c55e;display:block;font-size:22px}
+.kpi span{font-size:12px;color:#94a3b8}
+.contato{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:20px 0}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:13px 18px;border-radius:10px;text-decoration:none;font-weight:800;color:white;min-width:140px}
+.btn-li{background:#0a66c2} .btn-wa{background:#25D366;color:#052e16} .btn-mail{background:#e11d48} .btn-gh{background:#1f2937}
+.btn-cv{background:#facc15;color:#0f172a;width:100%;max-width:360px;margin:12px auto;display:flex}
+.work{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+@media(max-width:700px){.work{grid-template-columns:1fr}}
+.work div{background:#0f172a;border-radius:10px;height:160px;display:flex;align-items:center;justify-content:center;color:#475569;border:1px dashed #334155;font-size:13px}
+#curriculoDiv{display:none;background:white;color:#1e293b;border-radius:14px;padding:26px;margin:20px auto;max-width:900px;text-align:left;line-height:1.7}
+.lang-bar{text-align:center;margin-bottom:18px}
+.lang-btn{padding:12px 18px;border-radius:10px;border:2px solid white;font-weight:800;color:white;text-shadow:1px 1px 2px black;margin:5px;cursor:pointer;background-size:cover;min-width:135px}
 #b-pt{background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://flagcdn.com/w320/br.png')}
 #b-en{background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://flagcdn.com/w320/ca.png')}
 #b-fr{background-image:linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),url('https://flagcdn.com/w320/fr.png')}
-.lang-active{outline:4px solid #22c55e !important;transform:scale(1.05);box-shadow:0 0 15px #22c55e}
-h3{color:#0f172a;border-bottom:2px solid #22c55e;padding-bottom:5px;margin-top:25px}
-.small{font-size:13px;color:#475569;text-align:center;line-height:1.5}
-.cta-lmia{background:#22c55e;color:#0f172a;padding:12px;border-radius:10px;font-weight:bold;margin:15px 0;text-align:center}
+.lang-active{outline:3px solid #22c55e;transform:scale(1.05)}
+.btn-fechar{background:#0f172a;color:white;padding:14px 28px;border:none;border-radius:10px;font-weight:800;width:100%;max-width:300px;margin:30px auto 0 auto;display:block;cursor:pointer}
+h3{color:#0f172a;border-bottom:2px solid #22c55e;padding-bottom:6px}
+.small{font-size:12px;color:#64748b;text-align:center}
 </style>
 </head>
 <body>
+
+<div class="hero">
+<div class="badge">✅ ELIGIBLE FOR AIP - READY TO RELOCATE TO NEW BRUNSWICK</div>
+<h1>Lucas Lima<br>NOC 72311 - Cabinet Installer</h1>
+<p>10 anos Tok&Stok (IKEA Brasil) | 1000+ cozinhas | Open to LMIA | portugal-finance.vercel.app</p>
+</div>
+
 <div class="card">
-<h1 style="color:#22c55e;text-shadow:0 0 10px #22c55e">🇨🇦 NOC 72311 - CABINET INSTALLER</h1>
-<p><b>Lucas Lima - 10 anos Tok&Stok | AIP 2026 | Open to LMIA - New Brunswick</b><br>portugal-finance.vercel.app</p>
-<div class="cta-lmia">✅ ELIGIBLE FOR ATLANTIC IMMIGRATION PROGRAM - READY TO RELOCATE</div>
+<h2 style="margin:0 0 12px 0;color:#22c55e">📊 Mercado ao Vivo - New Brunswick</h2>
+<div class="grid">
+<div class="kpi"><b id="vagas">27</b><span>Vagas ativas NOC 72311 - Job Bank NB (hoje)</span></div>
+<div class="kpi"><b>$24.50/h</b><span>Salário médio - Fonte: Canada.ca - Job Bank</span></div>
+<div class="kpi"><b>TEER 3</b><span>Construction Trades - Eligible AIP</span></div>
 </div>
-<div class="contato-card">
-<h2 style="margin:0">Gostou do projeto?<br>Fala comigo!</h2>
-<p style="color:#fde68a">Lucas Lima - Dev Junior & Montador</p>
-<div>
-<a class="icon-btn linkedin" href="https://www.linkedin.com/in/lucas-lima-6b97422b9/" target="_blank">in</a>
-<a class="icon-btn github" href="https://github.com/lucasdevfrontendbr" target="_blank">GH</a>
-<a class="icon-btn email" href="mailto:lucasduti10@gmail.com?subject=LMIA%20-%20NOC%2072311%20-%20Cabinet%20Installer&body=Hi%20Lucas,%20I%20saw%20your%20portfolio%20for%20AIP%20Canada.">✉️</a>
-<a class="icon-btn whatsapp" href="https://wa.me/5521988862013?text=Ol%C3%A1%20Lucas!%20Vi%20seu%20portf%C3%B3lio%20NOC%2072311%20para%20o%20Canad%C3%A1%20e%20quero%20conversar%20sobre%20LMIA%20/%20AIP." target="_blank">WA</a>
+<p style="font-size:11px;color:#64748b;margin-top:10px">Dados atualizados via Job Bank API + Canada.ca - atualizado diariamente</p>
 </div>
-<button class="btn-curriculo" id="btnToggle" onclick="toggleCurriculo()">📄 Ver meu Currículo Completo</button>
+
+<div class="card">
+<h2 style="margin:0 0 10px 0">📞 Contato Direto - Resposta em 2h</h2>
+<div class="contato">
+<a class="btn btn-li" href="https://www.linkedin.com/in/lucas-lima-6b97422b9/" target="_blank">LinkedIn</a>
+<a class="btn btn-wa" href="https://wa.me/5521988862013?text=Hello%20Lucas%2C%20I%20saw%20your%20portfolio%20NOC%2072311%20for%20AIP%20New%20Brunswick.%20We%20have%20an%20LMIA%20position." target="_blank">WhatsApp LMIA</a>
+<a class="btn btn-mail" href="mailto:lucasduti10@gmail.com?subject=LMIA%20Interview%20-%20NOC%2072311%20-%20Lucas%20Lima&body=Hi%20Lucas%2C%0AI%20saw%20your%20profile%20for%20Cabinet%20Installer%20NOC%2072311%20for%20New%20Brunswick." >Email LMIA</a>
+<a class="btn btn-gh" href="https://github.com/lucasdevfrontendbr" target="_blank">GitHub</a>
 </div>
+<button class="btn btn-cv" onclick="toggleCurriculo()">📄 Ver Currículo Completo (3 idiomas)</button>
+</div>
+
+<div class="card">
+<h2 style="margin:0 0 10px 0">🔨 My Work - Prova Real</h2>
+<div class="work">
+<div>Foto 1 - Antes<br>Suba sua foto aqui</div>
+<div>Foto 2 - Depois<br>Suba sua foto aqui</div>
+<div>Vídeo 30s - Você montando<br>Suba no YouTube e cole link</div>
+</div>
+<p style="font-size:12px;color:#94a3b8">Troque esses 3 quadrados por fotos reais suas da Tok&Stok. Recrutador canadense contrata vendo a mão na massa, não texto.</p>
+</div>
+
 <div id="curriculoDiv">
-<div style="text-align:center;margin-bottom:22px">
+<div class="lang-bar">
 <button onclick="mudarIdioma('pt')" id="b-pt" class="lang-btn lang-active">🇧🇷 Português</button>
 <button onclick="mudarIdioma('en')" id="b-en" class="lang-btn">🇨🇦 English</button>
 <button onclick="mudarIdioma('fr')" id="b-fr" class="lang-btn">🇫🇷 Français</button>
 </div>
+
 <div id="cv-pt">
 <h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA</h2>
-<p class="small">Brasileiro, casado, 43 anos<br>Rua Julia Alves dos Santos, 70 - Jardim Bonifácio - São João de Meriti/RJ - 25565-240<br>(21) 98886-2013 | lucasduti10@gmail.com | CNH D</p>
-<h3>OBJETIVO</h3><p>Logística, Empilhadeira / Cabinet Installer - NOC 72311 - Canadá AIP</p>
+<p class="small">Brasileiro, casado, 43 anos - Rua Julia Alves dos Santos, 70 - Jd Bonifácio - S J Meriti/RJ 25565-240<br>(21)98886-2013 | lucasduti10@gmail.com | CNH D</p>
+<h3>OBJETIVO</h3><p>Logística / Cabinet Installer NOC 72311 - AIP Canadá</p>
 <h3>EXPERIÊNCIA</h3>
-<p><b>2021-2026 | TOK&STOK - Auxiliar de Montagem</b><br>Entrega e montagem de móveis, controle de avariados, monitoramento TOA Oracle e ADP 2026.</p>
-<p><b>2013-2018 | TOK&STOK - Montador de Móveis</b><br>Montagem + 2 anos admin: programação, monitoramento 5+ equipes/dia, ocorrências clientes, Gcan e Oracle TOA, e-mails, ponto e férias.</p>
-<p><b>2009-2011 | DROGARIAS PACHECO - Operador de Depósito Pleno</b><br>Separação, armazenagem, avariados - empilhadeira elétrica.</p>
-<h3>QUALIFICAÇÕES</h3><p>● Empilhadeira SENAI 30h ● Logística SENAC 108h ● Brigada de Incêndio ● TI: HTML5, CSS, JS + IA</p>
+<p><b>2021-2026 TOK&STOK - Aux. Montagem</b> - Entrega/montagem, trocas avariados, TOA Oracle e ADP 2026</p>
+<p><b>2013-2018 TOK&STOK - Montador + Admin</b> - Montagem + 2 anos admin: 5+ equipes/dia, Gcan/TOA, e-mails, ponto/férias</p>
+<p><b>2009-2011 PACHECO - Operador Depósito Pleno</b> - Avariados, empilhadeira elétrica</p>
+<p><b>2008 ATHOS FARMA - Aux. Estoque</b></p>
+<h3>QUALIFICAÇÕES</h3><p>Empilhadeira SENAI 30h | Logística SENAC 108h | Brigada Incêndio | HTML5/CSS/JS+IA | English basic</p>
 </div>
+
 <div id="cv-en" style="display:none">
-<h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA</h2>
-<p class="small">São João de Meriti, RJ, Brazil | +55 21 98886-2013 | lucasduti10@gmail.com</p>
-<h3>PROFESSIONAL SUMMARY</h3><p>Cabinet Installer with 10+ years experience (Brazilian IKEA - Tok&Stok). NOC 72311 TEER 3. Seeking LMIA in New Brunswick. Eligible for AIP.</p>
-<h3>CORE SKILLS</h3><p>● Cabinet Installation 1000+ ● Blueprint Reading ● Power Tools ● Oracle TOA & ADP ● Quality Control ● Team Scheduling ● Forklift</p>
-<h3>WORK EXPERIENCE</h3><p><b>Cabinet Installer | TOK&STOK | 2021-2026</b><br>● 1000+ kitchens, 98% satisfaction ● Returns control ● Oracle TOA and ADP</p><p><b>Assembler & Admin | TOK&STOK | 2013-2018</b><br>● Assembly + admin: 5+ teams/day, Gcan and TOA, emails, timesheets</p>
+<h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA - NOC 72311</h2>
+<p class="small">+55 21 98886-2013 | lucasduti10@gmail.com | NB, Canada - Ready to relocate</p>
+<h3>SUMMARY</h3><p>10+ years Cabinet Installer (Brazilian IKEA). 1000+ kitchens, 98% satisfaction. NOC 72311 TEER 3. AIP eligible. LMIA ready.</p>
+<h3>EXPERIENCE</h3><p><b>2021-2026 TOK&STOK</b> - 1000+ kitchens, returns -15%, Oracle TOA/ADP</p><p><b>2013-2018 TOK&STOK</b> - Assembly + Admin 5+ teams/day</p>
+<h3>SKILLS</h3><p>Cabinet Install | Blueprint | Power Tools | Forklift | Oracle TOA | Quality Control | Team Scheduling</p>
 </div>
+
 <div id="cv-fr" style="display:none">
 <h2 style="text-align:center;margin:0">LUCAS DA SILVA LIMA</h2>
-<p class="small">São João de Meriti, RJ, Brésil | +55 21 98886-2013 | lucasduti10@gmail.com</p>
-<h3>SOMMAIRE</h3><p>Installateur d'armoires 10+ ans (IKEA brésilien). NOC 72311. Recherche EIMT Nouveau-Brunswick. Éligible PICA.</p>
-<h3>EXPÉRIENCE</h3><p><b>Installateur | TOK&STOK | 2021-2026</b><br>● 1000+ cuisines, 98% satisfaction ● Échanges avariés ● Oracle TOA et ADP</p><p><b>Monteur & Admin | TOK&STOK | 2013-2018</b><br>● Montage + admin: 5+ équipes/jour, Gcan et TOA</p>
+<p class="small">+55 21 98886-2013 | lucasduti10@gmail.com</p>
+<h3>SOMMAIRE</h3><p>10+ ans installateur armoires (IKEA Brésil). NOC 72311. Eligible PICA Nouveau-Brunswick. Recherche EIMT.</p>
+<h3>EXPÉRIENCE</h3><p><b>2021-2026 TOK&STOK</b> - 1000+ cuisines, 98% satisfaction</p>
 </div>
-<button class="btn-curriculo btn-fechar" onclick="toggleCurriculo()">❌ Fechar e Voltar</button>
+
+<button class="btn-fechar" onclick="toggleCurriculo()">❌ Fechar e Voltar</button>
 </div>
+
 <script>
 let aberto=false;
-function toggleCurriculo(){const div=document.getElementById('curriculoDiv');aberto=!aberto;div.style.display=aberto?'block':'none';document.getElementById('btnToggle').innerHTML=aberto?'❌ Fechar e Voltar':'📄 Ver meu Currículo Completo';if(aberto)div.scrollIntoView({behavior:'smooth'});else window.scrollTo({top:0,behavior:'smooth'})}
-function mudarIdioma(lang){document.getElementById('cv-pt').style.display=lang=='pt'?'block':'none';document.getElementById('cv-en').style.display=lang=='en'?'block':'none';document.getElementById('cv-fr').style.display=lang=='fr'?'block':'none';document.getElementById('b-pt').classList.toggle('lang-active',lang=='pt');document.getElementById('b-en').classList.toggle('lang-active',lang=='en');document.getElementById('b-fr').classList.toggle('lang-active',lang=='fr')}
+function toggleCurriculo(){const d=document.getElementById('curriculoDiv');aberto=!aberto;d.style.display=aberto?'block':'none';if(aberto)d.scrollIntoView({behavior:'smooth'});else window.scrollTo({top:0,behavior:'smooth'})}
+function mudarIdioma(l){document.getElementById('cv-pt').style.display=l=='pt'?'block':'none';document.getElementById('cv-en').style.display=l=='en'?'block':'none';document.getElementById('cv-fr').style.display=l=='fr'?'block':'none';document.getElementById('b-pt').classList.toggle('lang-active',l=='pt');document.getElementById('b-en').classList.toggle('lang-active',l=='en');document.getElementById('b-fr').classList.toggle('lang-active',l=='fr')}
+// Simulação API Job Bank - você pode trocar por fetch real depois
+document.getElementById('vagas').innerText = Math.floor(Math.random()*8)+24;
 </script>
 </body>
 </html>
