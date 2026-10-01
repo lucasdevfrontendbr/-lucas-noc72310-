@@ -5,133 +5,130 @@ export default function Home() {
   const [lang, setLang] = useState<"BR" | "EN" | "FR">("BR");
 
   return (
-    <div className="min-h-screen bg-gray-100 p-2 md:p-8 font-sans">
-      <div className="max-w-4xl mx-auto bg-white shadow-lg rounded-lg overflow-hidden">
-        
-        {/* MENU DE IDIOMAS */}
-        <div className="bg-green-800 p-4 flex gap-2 justify-center sticky top-0 z-10">
-          <button onClick={() => setLang("BR")} className={`px-4 py-2 rounded font-bold ${lang === "BR" ? "bg-white text-green-800" : "bg-green-700 text-white"}`}>BR - Português</button>
-          <button onClick={() => setLang("EN")} className={`px-4 py-2 rounded font-bold ${lang === "EN" ? "bg-white text-green-800" : "bg-green-700 text-white"}`}>EN - Canada</button>
-          <button onClick={() => setLang("FR")} className={`px-4 py-2 rounded font-bold ${lang === "FR" ? "bg-white text-green-800" : "bg-green-700 text-white"}`}>FR - Canada</button>
+    <div className="min-h-screen bg-black relative overflow-hidden p-2 md:p-8">
+      {/* FUNDO CYBERPUNK ANIMADO */}
+      <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-black animate-pulse"></div>
+      <div className="absolute inset-0 bg-[linear-gradient(transparent_95%,rgba(0,255,255,0.1)_100%)] bg-[length:100%_20px]"></div>
+
+      <div className="relative z-10 max-w-4xl mx-auto bg-white/95 backdrop-blur shadow-[0_0_30px_rgba(0,255,255,0.5)] rounded-lg overflow-hidden border border-cyan-400">
+
+        <div className="bg-black p-4 flex gap-2 justify-center border-b border-cyan-400">
+          <button onClick={() => setLang("BR")} className={`px-4 py-2 rounded font-bold border ${lang === "BR"? "bg-cyan-400 text-black shadow-[0_0_10px_cyan]" : "bg-transparent text-cyan-400 border-cyan-400"}`}>BR - Completo</button>
+          <button onClick={() => setLang("EN")} className={`px-4 py-2 rounded font-bold border ${lang === "EN"? "bg-cyan-400 text-black shadow-[0_0_10px_cyan]" : "bg-transparent text-cyan-400 border-cyan-400"}`}>EN - Canada</button>
+          <button onClick={() => setLang("FR")} className={`px-4 py-2 rounded font-bold border ${lang === "FR"? "bg-cyan-400 text-black shadow-[0_0_10px_cyan]" : "bg-transparent text-cyan-400 border-cyan-400"}`}>FR - Canada</button>
         </div>
 
-        <div className="p-6 md:p-10">
-          {/* BR - PADRÃO BRASILEIRO COMPLETO */}
+        <div className="p-6 md:p-10 text-[13px] leading-relaxed text-black">
+
           {lang === "BR" && (
             <div>
-              <h1 className="text-3xl font-bold text-center">LUCAS DA SILVA LIMA</h1>
-              <p className="text-center text-sm mt-2">Brasileiro, casado, 43 anos | CNH D<br/>Rua Júlia Alves dos Santos, 70 - Jd Bonifácio - São João de Meriti/RJ - 25585-240<br/>(21) 98886-2013 | lucasduti10@gmail.com</p>
-              
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">OBJETIVO</h2>
-              <p className="mt-2">Técnico de TI / Suporte Help Desk N1 | Logística / Instalador de Móveis e Armários Planejados - NOC 72311 - Programa AIP Canadá</p>
-
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">RESUMO PROFISSIONAL</h2>
-              <p className="mt-2 text-justify">Profissional com 18 anos de experiência em logística, depósito e montagem técnica. Atuação sólida com sistemas ERP Oracle, TOA, GCAN e WMS, gestão de equipes (5+ equipes/dia), controle de ponto, férias, relatórios e emissão de romaneios. Experiência comprovada em atendimento ao cliente N2 presencial, diagnóstico e resolução de problemas em campo, garantindo zero retrabalho e satisfação do cliente. Em transição de carreira para área de TI, cursando Google IT Support Professional Certificate e Escola do Trabalhador 4.0 (Microsoft). Perfil proativo, pontual, organizado e focado em SLA.</p>
-
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">EXPERIÊNCIA PROFISSIONAL</h2>
-              <div className="mt-3">
-                <p><b>2021 - 2026 | TOK&STOK - Auxiliar de Montagem Pleno</b></p>
-                <ul className="list-disc ml-6 text-sm">
-                  <li>Entrega, montagem técnica de móveis e armários planejados, trocas de peças avariadas e instalações de CFTV</li>
-                  <li>Atendimento N2 presencial na casa do cliente, diagnóstico de falhas e resolução imediata de problemas</li>
-                  <li>Operação dos sistemas TOA Oracle e ADP 2026 para controle de ordens</li>
-                  <li>Leitura de manuais técnicos, conferência de peças, controle de qualidade e segurança residencial</li>
-                </ul>
-              </div>
-              <div className="mt-3">
-                <p><b>2013 - 2018 | TOK&STOK - Montador de Móveis + Administrativo (2 anos)</b></p>
-                <ul className="list-disc ml-6 text-sm">
-                  <li>Montagem técnica de móveis + função administrativa dedicada</li>
-                  <li>Responsável pela geração de programação em rede para 5+ equipes/dia via sistema GCAN/TOA</li>
-                  <li>Controle de ponto, férias e emissão de relatórios de jornada e romaneios</li>
-                  <li>Atendimento via e-mail e telefone, reagendamento de entregas, resolução de ocorrências e monitoramento de equipes em campo</li>
-                  <li>Suporte Help Desk interno para equipe de montagem e abertura/fechamento de ordens no Oracle por SLA (gestão de tickets)</li>
-                </ul>
-              </div>
-              <div className="mt-3">
-                <p><b>2009 - 2011 | DROGARIAS PACHECO - Operador de Depósito Pleno</b></p>
-                <ul className="list-disc ml-6 text-sm">
-                  <li>Operação completa de depósito com empilhadeira elétrica</li>
-                  <li>Gestão de avariados, controle de estoque com Oracle e WMS</li>
-                  <li>Abertura, acompanhamento por SLA e fechamento de ordens de montagem no Oracle</li>
-                  <li>Geração de programação em rede, impressão de romaneios e emissão de relatórios de jornada</li>
-                </ul>
-              </div>
-              <div className="mt-3">
-                <p><b>2008 | ATHOS FARMA - Auxiliar de Estoque</b></p>
-                <ul className="list-disc ml-6 text-sm">
-                  <li>Auxílio no controle de estoque, separação, organização e inventário</li>
-                </ul>
+              <h1 className="text-2xl font-bold text-center">LUCAS DA SILVA LIMA</h1>
+              <div className="text-center mt-3 text-xs">
+                <p>Brasileiro, casado, 43 anos</p>
+                <p>Rua Julia Alves dos Santos, nº 70</p>
+                <p>Bairro: Jardim Bonifácio – São João de Meriti/RJ – CEP: 25565-240</p>
+                <p>Telefones: (21) 98886-2013 / (21) 96435-2655</p>
+                <p>E-mail: lucasduti10@gmail.com https://www.linkedin.com/in/lucas-lima-6b97422b9/</p>
+                <p>Github lucasdevfrontendbr projeto hospedado no Github e Deploy pela vercel portugal-finance.vercel.app</p>
+                <p>CNH: Categoria "D" – Atividade Remunerada</p>
               </div>
 
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">QUALIFICAÇÕES E CURSOS</h2>
-              <ul className="list-disc ml-6 text-sm mt-2">
-                <li>Operador de Empilhadeira - SENAI 30h - Certificado</li>
-                <li>Logística - SENAC 108h</li>
-                <li>Brigada de Incêndio - Certificado</li>
-                <li>Google IT Support Professional Certificate - Coursera (Em andamento 1/5)</li>
-                <li>Fundamentos de Suporte Técnico - Escola do Trabalhador 4.0 / Microsoft (Em andamento)</li>
-                <li>HTML5, CSS3, JavaScript e IA - Curso em Vídeo / Alura</li>
-                <li>Pacote Office Avançado, Excel, Oracle, TOA, GCAN, WMS</li>
-                <li>Inglês Básico (em evolução para intermediário)</li>
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6 text-sm">OBJETIVO</h2>
+              <p className="mt-2">Atuar na área de Logística, Operação de Empilhadeira</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6 text-sm">FORMAÇÃO ACADÊMICA</h2>
+              <p className="mt-2">Ensino Médio Completo.</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6 text-sm">EXPERIÊNCIA PROFISSIONAL</h2>
+
+              <p className="mt-3 font-bold">2021 – 2026 | ESTOK DISTRIBUIDORA E SERVIÇOS-TOK&STOK</p>
+              <p><b>Cargo:</b> Auxiliar de Montagem</p>
+              <p><b>Atividades:</b> Entrega e montagem de móveis, controle e abertura de trocas de produtos avariados, monitoramento de serviços temporizados via sistema TOA (Oracle).2026 sistema ADP.</p>
+
+              <p className="mt-4 font-bold">2013 – 2018 | ESTOK COMÉRCIO E REPRESENTAÇÕES – TOK&STOK</p>
+              <p><b>Cargo:</b> Montador de Móveis</p>
+              <p><b>Atividades:</b> Entrega, montagem e controle via sistema TOA. Atuação por 2 anos na administração: abertura do escritório, geração de programação, impressão e monitoramento de equipes de montagem, recebimento de ocorrências de clientes, digitalização de documentos e arquivamento em rede e nos sistemas Gcan e Oracle TOA, reagendamento de entregas, fechamento da programação via sistema, resposta de e-mails, impressão de folhas de ponto e avisos de férias.</p>
+
+              <p className="mt-4 font-bold">2009 – 2011 | DROGARIAS PACHECO</p>
+              <p><b>Cargo:</b> Operador de Depósito Pleno</p>
+              <p><b>Atividades:</b> Separação, reposição, abastecimento, conferência e armazenagem. Atuação no setor de avariados treinei empilhadeira eletrica</p>
+
+              <p className="mt-4 font-bold">2008 – 2008 | ATHOS FARMA SUDESTE S.A.</p>
+              <p><b>Cargo:</b> Auxiliar de Estoque</p>
+              <p><b>Atividades:</b> Separação, reposição, armazenagem, conferência, expedição e apoio ao CPD/Sala da Gerência.</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6 text-sm">QUALIFICAÇÕES E ATIVIDADES PROFISSIONAIS</h2>
+              <ul className="list-disc ml-5 mt-2">
+                <li>Operador de Empilhadeira – SENAI/RJ, 30 horas.</li>
+                <li>Operações de Almoxarifado e Logística – SENAC, 108 horas. Conteúdo: custos logísticos, balanço e inventário.</li>
+                <li>Brigada de Incêndio – Primeiros socorros Prevenção e combate a incêndio ( Corpo de Bombeiros).</li>
+                <li>Informática: Windows, Word, Excel, HTML5, CSS, JavaScript + IA.</li>
               </ul>
 
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">HABILIDADES</h2>
-              <p className="text-sm mt-2">Help Desk N1 | Gestão de Tickets por SLA | Redes e Backup | Manutenção Preventiva e Corretiva | Instalação de Móveis e Armários NOC 72311 | Montagem Técnica | Oracle ERP | WMS | TOA | GCAN | Atendimento ao Cliente | Liderança de Equipe | CNH D</p>
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-2 text-sm">INFORMAÇÕES ADICIONAIS</h2>
+              <ul className="list-disc ml-5 mt-2">
+                <li>English basic</li>
+              </ul>
+              <p className="text-center mt-6 font-bold">Lucas Da Silva Lima</p>
             </div>
           )}
 
-          {/* EN - CANADIAN PATTERN */}
           {lang === "EN" && (
             <div>
-              <h1 className="text-3xl font-bold text-center">LUCAS DA SILVA LIMA</h1>
-              <p className="text-center text-sm mt-2">São João de Meriti, RJ, Brazil | +55 (21) 98886-2013 | lucasduti10@gmail.com | Driver License Class D</p>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">OBJECTIVE</h2>
-              <p className="mt-2">Cabinet Installer NOC 72311 | IT Support Technician NOC 22221 - AIP Canada Program</p>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">PROFESSIONAL SUMMARY</h2>
-              <p className="mt-2 text-justify">Highly skilled professional with 18 years of experience in logistics, warehouse operations, and technical furniture/cabinet installation. Proven expertise in ERP systems (Oracle, TOA, GCAN, WMS), team coordination (5+ teams/day), and customer service. Strong background in troubleshooting, problem-solving, and ensuring zero rework in field installations. Transitioning to IT with Google IT Support Certificate in progress. Proactive, reliable, and SLA-driven.</p>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">WORK EXPERIENCE</h2>
-              <div className="mt-3 text-sm">
-                <p><b>2021-2026 TOK&STOK - Furniture & Cabinet Installer</b></p>
-                <p>On-site delivery and technical assembly of furniture and built-in cabinets, damaged parts exchange. Provided N2 support at client homes, diagnosed failures and immediate resolution. Operated TOA Oracle and ADP systems. Reading technical manuals and quality control.</p>
-                <p className="mt-2"><b>2013-2018 TOK&STOK - Furniture Installer + Administrative Coordinator</b></p>
-                <p>Combined field installation with 2 years administrative. Generated daily network scheduling for 5+ teams/day using GCAN/TOA. Managed timesheets, vacations, route reports. Provided N1 Help Desk support via email/phone, SLA compliance for all orders in Oracle (ticket management).</p>
-                <p className="mt-2"><b>2009-2011 PACHECO - Warehouse Operator</b></p>
-                <p>Full warehouse operation including electric forklift. Managed damaged goods and inventory with Oracle and WMS. Opened, tracked by SLA and closed assembly orders in Oracle. Generated network programming and reports.</p>
-                <p className="mt-2"><b>2008 ATHOS FARMA - Stock Assistant</b></p>
-                <p>Inventory control, picking, organization.</p>
-              </div>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">CERTIFICATIONS</h2>
-              <p className="text-sm mt-2">Forklift Operator SENAI 30h | Logistics SENAC 108h | Fire Brigade | Google IT Support (In Progress) | HTML5/CSS/JS+AI | English Basic</p>
+              <h1 className="text-2xl font-bold text-center">LUCAS DA SILVA LIMA</h1>
+              <p className="text-center mt-2 text-xs">São João de Meriti, RJ, Brazil | (21) 98886-2013 | lucasduti10@gmail.com | LinkedIn: lucas-lima-6b97422b9 | Github: lucasdevfrontendbr | portugal-finance.vercel.app | License D</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">OBJECTIVE - NOC 72311 Cabinet Installer / NOC 22221 IT Support</h2>
+              <p>Work in Logistics, Forklift Operation and Cabinet Installation - AIP Canada</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">EDUCATION</h2>
+              <p>High School Complete.</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">WORK EXPERIENCE - COMPLETE</h2>
+              <p className="mt-2"><b>2021-2026 ESTOK DISTRIBUIDORA E SERVICOS - TOK&STOK - Assembly Assistant</b><br/>Delivery and assembly of furniture, control and opening of exchanges for damaged products, monitoring of timed services via TOA system (Oracle). 2026 ADP system.</p>
+              <p className="mt-2"><b>2013-2018 ESTOK COMERCIO E REPRESENTACOES - TOK&STOK - Furniture Assembler</b><br/>Delivery, assembly and control via TOA system. Worked for 2 years in administration: opening office, generating schedule programming, printing and monitoring assembly teams, receiving customer occurrences, scanning documents and archiving in network and in Gcan and Oracle TOA systems, rescheduling deliveries, closing programming via system, email responses, printing timesheets and vacation notices.</p>
+              <p className="mt-2"><b>2009-2011 DROGARIAS PACHECO - Full Warehouse Operator</b><br/>Separation, replenishment, supply, conference and storage. Worked in damaged goods sector, trained electric forklift.</p>
+              <p className="mt-2"><b>2008-2008 ATHOS FARMA SUDESTE S.A. - Stock Assistant</b><br/>Separation, replenishment, storage, conference, shipping and support to IT/Manager Room.</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">QUALIFICATIONS</h2>
+              <ul className="list-disc ml-5 mt-2">
+                <li>Forklift Operator – SENAI/RJ, 30 hours.</li>
+                <li>Warehouse and Logistics Operations – SENAC, 108 hours. Content: logistics costs, balance and inventory.</li>
+                <li>Fire Brigade – First aid, Fire prevention and fighting (Fire Department).</li>
+                <li>IT: Windows, Word, Excel, HTML5, CSS, JavaScript + AI.</li>
+                <li>English basic</li>
+              </ul>
             </div>
           )}
 
-          {/* FR - MODELE CANADIEN */}
           {lang === "FR" && (
             <div>
-              <h1 className="text-3xl font-bold text-center">LUCAS DA SILVA LIMA</h1>
-              <p className="text-center text-sm mt-2">São João de Meriti, RJ, Brésil | +55 (21) 98886-2013 | lucasduti10@gmail.com | Permis Classe D</p>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">OBJECTIF</h2>
-              <p className="mt-2">Installateur d'armoires CNP 72311 | Technicien en soutien informatique - Programme AIP Canada</p>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">RÉSUMÉ PROFESSIONNEL</h2>
-              <p className="mt-2 text-justify">Professionnel hautement qualifié avec 18 ans d'expérience en logistique, opérations d'entrepôt et installation technique de meubles et d'armoires. Expertise en ERP (Oracle, TOA, GCAN, WMS), coordination de 5+ équipes/jour et service client. Solide expérience en dépannage et garantie de zéro retouche. Transition vers l'informatique avec certificat Google IT Support en cours.</p>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">EXPÉRIENCE</h2>
-              <div className="mt-3 text-sm">
-                <p><b>2021-2026 TOK&STOK - Installateur de meubles et d'armoires</b></p>
-                <p>Livraison et assemblage technique sur site, échange de pièces endommagées. Support N2 chez les clients, diagnostic et résolution immédiate. TOA Oracle et ADP, lecture des manuels techniques.</p>
-                <p className="mt-2"><b>2013-2018 TOK&STOK - Installateur + Coordonnateur administratif</b></p>
-                <p>Planification réseau quotidienne pour 5+ équipes via GCAN/TOA, gestion feuilles de temps, congés, rapports. Support Help Desk N1 par e-mail/téléphone, respect SLA pour toutes commandes Oracle.</p>
-                <p className="mt-2"><b>2009-2011 PACHECO - Opérateur d'entrepôt</b></p>
-                <p>Chariot élévateur électrique, marchandises endommagées, contrôle inventaire avec Oracle et WMS, gestion de tickets par SLA.</p>
-              </div>
-              <h2 className="text-lg font-bold bg-gray-200 p-1 mt-6">FORMATIONS</h2>
-              <p className="text-sm mt-2">Chariot élévateur SENAI 30h | Logistique SENAC 108h | Brigade incendie | Google IT Support (En cours) | HTML/CSS/JS+IA</p>
+              <h1 className="text-2xl font-bold text-center">LUCAS DA SILVA LIMA</h1>
+              <p className="text-center mt-2 text-xs">São João de Meriti, RJ, Brésil | (21) 98886-2013 | lucasduti10@gmail.com | Permis D - Activité Rémunérée</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">OBJECTIF - CNP 72311 Installateur d'armoires</h2>
+              <p>Travailler dans la logistique, opération de chariot élévateur - AIP Canada</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">FORMATION</h2>
+              <p>Études secondaires complètes.</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">EXPÉRIENCE PROFESSIONNELLE COMPLÈTE</h2>
+              <p className="mt-2"><b>2021-2026 ESTOK DISTRIBUIDORA E SERVICOS-TOK&STOK - Aide à l'assemblage</b><br/>Livraison et assemblage de meubles, contrôle et ouverture d'échanges de produits endommagés, suivi des services temporisés via système TOA (Oracle). 2026 système ADP.</p>
+              <p className="mt-2"><b>2013-2018 ESTOK COMERCIO E REPRESENTACOES – TOK&STOK - Monteur de meubles</b><br/>Livraison, montage et contrôle via système TOA. 2 ans en administration: ouverture du bureau, génération de programmation, impression et suivi des équipes de montage, réception des réclamations clients, numérisation de documents et archivage en réseau et systèmes Gcan et Oracle TOA, reprogrammation des livraisons, fermeture de la programmation, réponse aux e-mails, impression des feuilles de pointage et avis de congés.</p>
+              <p className="mt-2"><b>2009-2011 DROGARIAS PACHECO - Opérateur d'entrepôt</b><br/>Séparation, réapprovisionnement, approvisionnement, contrôle et stockage. Secteur des avariés, formation chariot élévateur électrique.</p>
+              <p className="mt-2"><b>2008-2008 ATHOS FARMA SUDESTE S.A. - Assistant de stock</b><br/>Séparation, réapprovisionnement, stockage, contrôle, expédition et soutien au CPD/Bureau de gérance.</p>
+
+              <h2 className="font-bold bg-black text-cyan-400 p-1 mt-6">QUALIFICATIONS</h2>
+              <ul className="list-disc ml-5 mt-2">
+                <li>Opérateur de chariot élévateur – SENAI/RJ, 30h.</li>
+                <li>Opérations d'entrepôt et logistique – SENAC, 108h. Coûts logistiques, bilan et inventaire.</li>
+                <li>Brigade d'incendie – Premiers secours, prévention incendie.</li>
+                <li>Informatique: Windows, Word, Excel, HTML5, CSS, JavaScript + IA.</li>
+                <li>Anglais basique</li>
+              </ul>
             </div>
           )}
-        </div>
 
-        <div className="bg-gray-800 text-white text-center p-3 text-xs">
-          Atualizado 2026 - Disponível para NOC 72311 - AIP Canada & Vagas TI Brasil - CadÚnico
         </div>
       </div>
     </div>
